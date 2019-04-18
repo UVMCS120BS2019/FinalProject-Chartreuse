@@ -20,12 +20,12 @@ Button::Button(LongSquare ls, string label){
 }
 //draw the rectangle
 void Button::draw() {
-     /*ls.draw();
+     ls.draw();
      glColor3f(1, 1, 1);
-     glRasterPos2i(ls.getCenterX()-(4*label.length()), ls.getCenterY()+7);
+     glRasterPos2i(ls.getCentX()-(4*label.length()), ls.getCentY()+7);
      for (char &letter : label) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, letter);
-     }*/
+     }
 }
 
 bool Button::isOverlapping(int x, int y) const {

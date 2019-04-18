@@ -2,18 +2,24 @@
 // Created by Mary Woolley on 2019-04-18.
 //
 
-#include "graphics.h"
+
 #include <iostream>
 #include <vector>
 #include <iomanip>
 
 #include "graphics.h"
+#include "button.h"
 
 using namespace std;
 
+//setting the window size
 const int WIDTH = 800, HEIGHT = 600;
 GLdouble width= WIDTH, height= HEIGHT;
 int wd;
+
+//lets make a button!
+LongSquare gameButton({0,0,0}, {WIDTH/2, HEIGHT/2}, 120, 50);
+Button playGame(gameButton, "Made it!");
 
 // Enum for the different screen
 enum Screen {start, help, game, results};
@@ -67,9 +73,12 @@ void display() {
         case results: displayResults();
             break;
     }
+
+    glFlush();
 }
 
 void displayStart() {
+    playGame.draw();
 
 }
 void displayHelp(){

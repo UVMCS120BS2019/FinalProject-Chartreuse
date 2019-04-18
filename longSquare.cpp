@@ -85,7 +85,7 @@ unsigned int LongSquare::getWidth() const {
 }
 
 //DRAWing
-/*void LongSquare::draw() const {
+void LongSquare::draw() const {
 
     glColor3f(getRed(), getGreen(), getBlue());
     glBegin(GL_QUADS);
@@ -96,4 +96,4 @@ unsigned int LongSquare::getWidth() const {
     glVertex2i(getLeftX(), getBottomY());
 
     glEnd();
-}*/
+}
