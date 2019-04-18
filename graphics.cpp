@@ -19,7 +19,7 @@ int wd;
 
 //lets make a button!
 LongSquare gameButton({0,0,0}, {WIDTH/2, HEIGHT/2}, 120, 50);
-Button playGame(gameButton, "Made it!");
+Button playGame(gameButton, "Play");
 
 // Enum for the different screen
 enum Screen {start, help, game, results};
@@ -85,15 +85,23 @@ void displayHelp(){
 
 }
 void displayGame() {
+    string game1 = "You found the game screen!";
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 150 );
+    for (char &letter : game1) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
 
 }
 void displayResults() {
 
 }
+
 //make the cursor work on the window
 void cursor(int x, int y) {
     glutPostRedisplay();
 }
+
 //key functions
 void kbd(unsigned char key, int x, int y){
     if (key == 'h') {
@@ -113,7 +121,16 @@ void timer(int dummy) {
 
 //mouse clicking on stuff
 void mouse(int button, int state, int x, int y) {
-
+    if(window == start) {
+        if (playGame.isOverlapping(x, y) and button == GLUT_LEFT_BUTTON){
+            window = game;
+            if (playGame.isOverlapping(x,y)) {
+                if(button == GLUT_LEFT_BUTTON) {
+                    window = game;
+                }
+            }
+        }
+    }
 }
 
 
