@@ -85,6 +85,27 @@ void displayResults() {
 void cursor(int x, int y) {
     glutPostRedisplay();
 }
+//key functions
+void kbd(unsigned char key, int x, int y){
+    if (key == 'h') {
+        window = help;
+    }
+    else if (key == 27) {
+        glutDestroyWindow(wd);
+        exit(0);
+    }
+
+    glutPostRedisplay();
+}
+
+void timer(int dummy) {
+
+}
+
+//mouse clicking on stuff
+void mouse(int button, int state, int x, int y) {
+
+}
 
 
 int main(int argc, char** argv) {
@@ -98,7 +119,7 @@ int main(int argc, char** argv) {
     glutInitWindowSize((int)width, (int)height);
     glutInitWindowPosition(-200,-100); // Position the window's initial top-left corner
     /* create the window and store the handle to it */
-    wd = glutCreateWindow("Cave Dive" /* title */ );
+    wd = glutCreateWindow("Escape Dungeon" /* title */ );
 
     // Register callback handler for window re-paint event
     glutDisplayFunc(display);

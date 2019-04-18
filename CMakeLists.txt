@@ -28,7 +28,7 @@ file(GLOB SOURCE_FILES
         *.h
         )
 
-add_executable(main main.cpp graphics ${SOURCE_FILES} button.cpp button.h)
+add_executable(graphics ${SOURCE_FILES} button.cpp button.h)
 
 
 if (WIN32)
