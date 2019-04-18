@@ -5,9 +5,34 @@
 #ifndef FINALPROJECT_CHARTREUSE_BUTTON_H
 #define FINALPROJECT_CHARTREUSE_BUTTON_H
 
+#include <string>
+#include <functional>
+#include "longSquare.h"
 
-class button {
+using std::string;
 
+class Button {
+private:
+    //make a rectangle for the button
+    LongSquare ls;
+    //make a label
+    std::string label;
+    //button fill (color will be from our rectangle)
+    color fill;
+
+public:
+    //constructors
+    Button();
+    //
+    Button(LongSquare ls, string label);
+
+    //other methods
+    bool isOverlapping(int x, int y) const;
+
+    //virtual methods
+    virtual void draw();
+    //virtual void click(std::function<void()> callback);
+    virtual ~Button();
 };
 
 

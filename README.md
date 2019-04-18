@@ -28,3 +28,8 @@ FinalProject-Chartreuse
 * character w polymorphism
 * arrow keys push character through game
 * buttons to play game, go to help pg, exit
+* we need:
+    * Shapes class
+    * 2 types of shape classes (ie circle and rectangle*) \
+        *called something else
+    * a character
