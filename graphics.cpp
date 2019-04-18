@@ -18,8 +18,8 @@ GLdouble width= WIDTH, height= HEIGHT;
 int wd;
 
 //lets make a button!
-LongSquare gameButton({0.1,0.5,0.5}, {WIDTH/2, HEIGHT/2}, 50, 120);
-Button playGame(gameButton, "Made it!");
+LongSquare gameButton({0,0,0}, {WIDTH/2, HEIGHT/2}, 120, 50);
+Button playGame(gameButton, "Play");
 
 // Enum for the different screen
 enum Screen {start, help, game, results};
@@ -113,7 +113,16 @@ void timer(int dummy) {
 
 //mouse clicking on stuff
 void mouse(int button, int state, int x, int y) {
-
+    if(window == start) {
+        if (playGame.isOverlapping(x, y) and button == GLUT_LEFT_BUTTON){
+            window = game;
+            if (playGame.isOverlapping(x,y)) {
+                if(button == GLUT_LEFT_BUTTON) {
+                    window = game;
+                }
+            }
+        }
+    }
 }
 
 
