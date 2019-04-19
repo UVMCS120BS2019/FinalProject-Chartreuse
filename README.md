@@ -32,4 +32,8 @@ FinalProject-Chartreuse
     * Shapes class
     * 2 types of shape classes (ie circle and rectangle*) \
         *called something else
+        *called longSquare lolllll
     * a character
+    * ghosts!! (lil ovals that follow a track)
+    * circle class
+ 
