@@ -35,5 +35,9 @@ FinalProject-Chartreuse
         *called longSquare lolllll
     * a character
     * ghosts!! (lil ovals that follow a track)
-    * circle class
+    * circle class will be used by:
+        * ghosts
+        * tokens
+        * the head of the character/polymorphism!
+
  
