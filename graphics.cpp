@@ -9,6 +9,8 @@
 
 #include "graphics.h"
 #include "button.h"
+#include "circle.h"
+#include "character.h"
 
 using namespace std;
 
@@ -27,6 +29,9 @@ Button helpGame(helpButton, "Get Help");
 LongSquare returnButton({0,0,0}, {WIDTH/5, HEIGHT/5}, 120, 50);
 Button returnToMenu(returnButton, " <- Back to menu");
 
+//make a character
+Character meghan;
+
 // Enum for the different screen
 enum Screen {start, help, game, results};
 Screen window;
@@ -44,15 +49,13 @@ void initGL() {
 void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
+            meghan.move(x, y);
             break;
         case GLUT_KEY_LEFT:
-
             break;
         case GLUT_KEY_RIGHT:
-
             break;
         case GLUT_KEY_UP:
-
             break;
     }
 
@@ -120,6 +123,8 @@ void displayGame() {
     for (char &letter : game1) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
+
+    meghan.draw();
 
 }
 void displayResults() {
