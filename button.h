@@ -23,11 +23,11 @@ private:
 public:
     //constructors
     Button();
-    //
     Button(LongSquare ls, string label);
 
     //other methods
     bool isOverlapping(int x, int y) const;
+    void hover();
 
     //virtual methods
     virtual void draw();

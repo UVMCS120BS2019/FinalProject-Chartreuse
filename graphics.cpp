@@ -18,7 +18,7 @@ GLdouble width= WIDTH, height= HEIGHT;
 int wd;
 
 //lets make a button!
-LongSquare gameButton({0,0,0}, {WIDTH/2, HEIGHT/2}, 120, 50);
+LongSquare gameButton({0.1,0.5,0.5}, {WIDTH/2, HEIGHT/2}, 50, 120);
 Button playGame(gameButton, "Made it!");
 
 // Enum for the different screen

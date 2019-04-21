@@ -16,7 +16,7 @@ Button::Button() {
 Button::Button(LongSquare ls, string label){
     this->ls = ls;
     this->label = label;
-    //fill = ls.getFill();
+    fill = ls.getFill();
 }
 //draw the rectangle
 void Button::draw() {
@@ -28,6 +28,11 @@ void Button::draw() {
      }
 }
 
+// Change color of the box when the user is hovering over it
+void Button::hover() {
+    ls.setColor(fill.red + 0.3, fill.green + 0.3, fill.blue + 0.3);
+}
+
 bool Button::isOverlapping(int x, int y) const {
     if (x > ls.getLeftX() && x < ls.getRightX() && y > ls.getTopY() && y < ls.getBottomY()) {
         return true;
@@ -36,6 +41,7 @@ bool Button::isOverlapping(int x, int y) const {
         return false; // Placeholder for compilation
     }
 }
+
 
 Button::~Button() {
 
