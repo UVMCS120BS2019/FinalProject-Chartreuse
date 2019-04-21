@@ -1,0 +1,14 @@
+//
+// Created by Mary Woolley on 2019-04-21.
+//
+
+#ifndef FINALPROJECT_CHARTREUSE_CHARACTER_H
+#define FINALPROJECT_CHARTREUSE_CHARACTER_H
+
+
+class character {
+
+};
+
+
+#endif //FINALPROJECT_CHARTREUSE_CHARACTER_H
