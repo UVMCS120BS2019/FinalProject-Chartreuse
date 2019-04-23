@@ -9,6 +9,7 @@
 
 #include "graphics.h"
 #include "button.h"
+#include "longSquare.h"
 
 using namespace std;
 
@@ -31,9 +32,38 @@ Button returnToMenu(returnButton, " <- Back to menu");
 enum Screen {start, help, game, results};
 Screen window;
 
+vector<LongSquare> tiles;
+
 void init() {
     // Set the window to the welcome page
     window = start;
+
+    for (int i = 10; i < 311; i += 40) {
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 90}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 110}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 130}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 90}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 110}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 130}, 20, 20));
+    }
+
+    for (int i = 150; i < 431; i += 40) {
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {270, i}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {290, i}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {310, i}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {270, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {290, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {310, i + 20}, 20, 20));
+    }
+
+    for (int i = 330; i < 800; i += 40) {
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 410}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 430}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 450}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 410}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 430}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 450}, 20, 20));
+    }
 }
 
 void initGL() {
@@ -114,13 +144,15 @@ void displayHelp(){
 }
 
 void displayGame() {
-    string game1 = "You found the game screen!";
+    /* string game1 = "You found the game screen!";
     glColor3f(1.0f, 1.0f, 1.0f);
     glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 110 );
     for (char &letter : game1) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    } */
+    for (LongSquare i : tiles) {
+        i.draw();
     }
-
 }
 void displayResults() {
 
