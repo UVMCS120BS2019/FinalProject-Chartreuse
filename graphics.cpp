@@ -9,6 +9,8 @@
 
 #include "graphics.h"
 #include "button.h"
+#include "circle.h"
+#include "character.h"
 #include "longSquare.h"
 
 using namespace std;
@@ -27,6 +29,9 @@ Button helpGame(helpButton, "Get Help");
 //return to menu button
 LongSquare returnButton({0,0,0}, {WIDTH/5, HEIGHT/5}, 120, 50);
 Button returnToMenu(returnButton, " <- Back to menu");
+
+//make a character
+Character meghan;
 
 // Enum for the different screen
 enum Screen {start, help, game, results};
@@ -74,6 +79,7 @@ void initGL() {
 void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
+            meghan.move(x, y);
             break;
         case GLUT_KEY_LEFT:
 
@@ -153,6 +159,9 @@ void displayGame() {
     for (LongSquare i : tiles) {
         i.draw();
     }
+
+    meghan.draw();
+
 }
 void displayResults() {
 

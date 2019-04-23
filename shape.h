@@ -20,9 +20,26 @@ struct color {
 };
 
 class Shape {
+protected:
+    point cent;
+    color fill;
 
 public:
+    //constructors
+    Shape();
+    Shape(color col, point cent);
+    //getters and setters
+    point getCenter();
+    color getColor();
+
+    void setCenter(int chooseX, int chooseY);
+    void setColor(double newRed, double newGreen, double newBlue);
+    //other and virtual methods
+    void moveCenter(int changeX, int changeY);
+
     virtual void draw() const = 0;
+
+    virtual ~Shape();
 
 };
 
