@@ -9,6 +9,7 @@
 
 #include "graphics.h"
 #include "button.h"
+#include "longSquare.h"
 
 using namespace std;
 
@@ -23,22 +24,45 @@ Button playGame(gameButton, "Play");
 //help button
 LongSquare helpButton({0,0,0}, {WIDTH/2, HEIGHT/2}, 120, 50);
 Button helpGame(helpButton, "Get Help");
+//return to menu button
+LongSquare returnButton({0,0,0}, {WIDTH/5, HEIGHT/5}, 120, 50);
+Button returnToMenu(returnButton, " <- Back to menu");
 
 // Enum for the different screen
 enum Screen {start, help, game, results};
 Screen window;
 
-// vector for longsquare background
 vector<LongSquare> tiles;
 
 void init() {
     // Set the window to the welcome page
     window = start;
 
-    for (int i = 10; i <= 331; i += 40) {
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 110}, 20, 20));
-        tiles.push_back(LongSquare({0.5, 0.5, 0.5}, {i, 130}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 150}, 20, 20));
+    for (int i = 10; i < 311; i += 40) {
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 90}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 110}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 130}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 90}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 110}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 130}, 20, 20));
+    }
+
+    for (int i = 150; i < 431; i += 40) {
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {270, i}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {290, i}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {310, i}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {270, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {290, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {310, i + 20}, 20, 20));
+    }
+
+    for (int i = 330; i < 800; i += 40) {
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 410}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 430}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 450}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 410}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 430}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 450}, 20, 20));
     }
 }
 
@@ -98,34 +122,47 @@ void displayStart() {
 void displayHelp(){
     string helpMsg1 = "Having trouble?";
     glColor3f(1.0f, 1.0f, 1.0f);
-    glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 150 );
+    glRasterPos2i(WIDTH/2-120, HEIGHT/2);
     for (char &letter : helpMsg1) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
     }
     string helpMsg2 = "Using your arrow keys to navigate the maze.";
     glColor3f(1.0f, 1.0f, 1.0f);
-    glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 170 );
+    glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 50 );
     for (char &letter : helpMsg2) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, letter);
     }
     string helpMsg3 = "Avoid colliding with the ghosts!";
     glColor3f(1.0f, 1.0f, 1.0f);
-    glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 190 );
+    glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 80 );
     for (char &letter : helpMsg3) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, letter);
     }
+
+    returnToMenu.draw();
+
 }
 
 void displayGame() {
-
+    /* string game1 = "You found the game screen!";
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 110 );
+    for (char &letter : game1) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    } */
+    for (LongSquare i : tiles) {
+        i.draw();
+    }
 }
 void displayResults() {
 
 }
+
 //make the cursor work on the window
 void cursor(int x, int y) {
     glutPostRedisplay();
 }
+
 //key functions
 void kbd(unsigned char key, int x, int y){
     if (key == 'h') {
@@ -159,6 +196,16 @@ void mouse(int button, int state, int x, int y) {
             if (helpGame.isOverlapping(x,y)) {
                 if(button == GLUT_LEFT_BUTTON) {
                     window = help;
+                }
+            }
+        }
+    }
+    if (window == help) {
+        if (returnToMenu.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
+            window = start;
+            if (returnToMenu.isOverlapping(x,y)) {
+                if (button ==GLUT_LEFT_BUTTON) {
+                    window = start;
                 }
             }
         }
