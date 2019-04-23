@@ -92,7 +92,7 @@ void displayStart() {
     helpGame.draw();
 
 }
-void displayHelp(){
+void displayHelp(){ .
     string helpMsg1 = "Having trouble?";
     glColor3f(1.0f, 1.0f, 1.0f);
     glRasterPos2i(WIDTH/2-120, HEIGHT/2);
