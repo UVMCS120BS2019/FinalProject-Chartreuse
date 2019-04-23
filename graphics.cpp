@@ -28,9 +28,18 @@ Button helpGame(helpButton, "Get Help");
 enum Screen {start, help, game, results};
 Screen window;
 
+// vector for longsquare background
+vector<LongSquare> tiles;
+
 void init() {
     // Set the window to the welcome page
     window = start;
+
+    for (int i = 10; i <= 331; i += 40) {
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 110}, 20, 20));
+        tiles.push_back(LongSquare({0.5, 0.5, 0.5}, {i, 130}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 150}, 20, 20));
+    }
 }
 
 void initGL() {
