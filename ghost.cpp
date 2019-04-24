@@ -17,7 +17,7 @@ Circle eye2;
 Circle mouth;
 vector<Shape*> ghost;
 
-//Define private methods
+//Define Private methods
 //This creates all the parts for the ghost and puts them in the right order
 void Ghost::createGhostSkele(){
     head.setCenter(300,300);
@@ -41,6 +41,7 @@ void Ghost::createGhostSkele(){
 
 }
 
+
 //This adds the parts of the ghost to the vector
 void Ghost::addGhost(){
     ghost.push_back(new Circle(head));
@@ -61,6 +62,8 @@ void Ghost::drawGhost(){
     }
 }
 
+
+//Define Public methods
 //This calls all the private and public methods and assembles the ghost
 void Ghost::completedGhost(Ghost ghoul){
     ghoul.createGhostSkele();
