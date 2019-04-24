@@ -11,8 +11,13 @@
 #include "button.h"
 #include "circle.h"
 #include "character.h"
+#include "ghost.h"
 
 using namespace std;
+
+
+Circle trialCircle;
+
 
 //setting the window size
 const int WIDTH = 800, HEIGHT = 600;
@@ -87,7 +92,22 @@ void display() {
 }
 
 void displayStart() {
-
+    Ghost one;
+    one.completedGhost(one);
+    Circle key;
+    LongSquare base;
+    LongSquare topKey;
+    LongSquare bottomKey;
+    key.setColor(1,.8,0);
+    key.setCenter(500,300);
+    key.setRadius(15);
+    base=LongSquare({1,.8,0},{500,320},50, 10);
+    topKey=LongSquare({1,.8,0},{510,325},6, 10);
+    bottomKey=LongSquare({1,.8,0},{510,338},6, 10);
+    key.draw();
+    base.draw();
+    topKey.draw();
+    bottomKey.draw();
     playGame.draw();
     helpGame.draw();
 
