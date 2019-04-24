@@ -11,7 +11,9 @@
 #include "button.h"
 #include "circle.h"
 #include "character.h"
-#include "longSquare.h"
+#include "ghost.h"
+#include "token.h"
+#include "key.h"
 
 using namespace std;
 
@@ -82,13 +84,10 @@ void kbdS(int key, int x, int y) {
             meghan.move(x, y);
             break;
         case GLUT_KEY_LEFT:
-
             break;
         case GLUT_KEY_RIGHT:
-
             break;
         case GLUT_KEY_UP:
-
             break;
     }
 
@@ -120,7 +119,12 @@ void display() {
 }
 
 void displayStart() {
-
+    Ghost one;
+    Key two;
+    Token three;
+    one.completedGhost(one);
+    two.completedKey(two);
+    three.completedToken(three);
     playGame.draw();
     helpGame.draw();
 
