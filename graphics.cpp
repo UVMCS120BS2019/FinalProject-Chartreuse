@@ -17,10 +17,6 @@
 
 using namespace std;
 
-
-Circle trialCircle;
-
-
 //setting the window size
 const int WIDTH = 800, HEIGHT = 600;
 GLdouble width= WIDTH, height= HEIGHT;
