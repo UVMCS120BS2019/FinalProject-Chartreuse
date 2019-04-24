@@ -34,18 +34,23 @@ Button returnToMenu(returnButton, " <- Back to menu");
 
 //make a character
 Character meghan;
+Ghost one;
+Key two;
+Token three;
 
 // Enum for the different screen
 enum Screen {start, help, game, results};
 Screen window;
 
+//
 vector<LongSquare> tiles;
 
 void init() {
     // Set the window to the welcome page
     window = start;
 
-    for (int i = 10; i < 311; i += 40) {
+    // add squares for background maze to tile vector
+    for (int i = 10; i <= 310; i += 40) {
         tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 90}, 20, 20));
         tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 110}, 20, 20));
         tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 130}, 20, 20));
@@ -54,7 +59,7 @@ void init() {
         tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 130}, 20, 20));
     }
 
-    for (int i = 150; i < 431; i += 40) {
+    for (int i = 150; i <= 430; i += 40) {
         tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {270, i}, 20, 20));
         tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {290, i}, 20, 20));
         tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {310, i}, 20, 20));
@@ -71,6 +76,25 @@ void init() {
         tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 430}, 20, 20));
         tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 450}, 20, 20));
     }
+
+    for (int i = 190; i <= 390; i += 40) {
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {510, i}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {530, i}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {550, i}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {510, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {530, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {550, i + 20}, 20, 20));
+    }
+
+    for (int i = 570; i <= 650; i += 40) {
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 190}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 210}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 230}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 190}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 210}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 230}, 20, 20));
+    }
+    // end adding squares to tile vector
 }
 
 void initGL() {
@@ -119,12 +143,6 @@ void display() {
 }
 
 void displayStart() {
-    Ghost one;
-    Key two;
-    Token three;
-    one.completedGhost(one);
-    two.completedKey(two);
-    three.completedToken(three);
     playGame.draw();
     helpGame.draw();
 
@@ -165,6 +183,10 @@ void displayGame() {
     }
 
     meghan.draw();
+
+    one.completedGhost(one);
+    two.completedKey(two);
+    three.completedToken(three);
 
 }
 void displayResults() {
