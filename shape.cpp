@@ -33,6 +33,11 @@ void Shape::setColor(double newRed, double newGreen, double newBlue) {
     fill.blue = newBlue;
 }
 
+void Shape::moveCenter(int changeX, int changeY) {
+    cent.x+= changeX;
+    cent.x+= changeY;
+}
+
 Shape::~Shape() {
 
 }

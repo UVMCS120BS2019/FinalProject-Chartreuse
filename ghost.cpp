@@ -4,18 +4,18 @@
 
 #include "ghost.h"
 
-//Variables and vectors
-int x;
-int y;
-Circle head;
-LongSquare leg1;
-Circle halfCircleLeg;
-Circle halfCircleLeg2;
-Circle halfCircleLeg3;
-Circle eye1;
-Circle eye2;
-Circle mouth;
-vector<Shape*> ghost;
+////Variables and vectors
+//int x;
+//int y;
+//Circle head;
+//LongSquare leg1;
+//Circle halfCircleLeg;
+//Circle halfCircleLeg2;
+//Circle halfCircleLeg3;
+//Circle eye1;
+//Circle eye2;
+//Circle mouth;
+//vector<Shape*> ghost;
 
 //Define Private methods
 //This creates all the parts for the ghost and puts them in the right order
