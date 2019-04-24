@@ -35,6 +35,9 @@ Button returnToMenu(returnButton, " <- Back to menu");
 //make a character
 Character meghan;
 
+//make ghost
+Ghost ghosty;
+
 // Enum for the different screen
 enum Screen {start, help, game, results};
 Screen window;
@@ -165,6 +168,8 @@ void displayGame() {
     }
 
     meghan.draw();
+    ghosty.completedGhost(ghosty);
+
 
 }
 void displayResults() {
