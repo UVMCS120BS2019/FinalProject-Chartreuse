@@ -12,6 +12,7 @@
 #include "circle.h"
 #include "character.h"
 #include "ghost.h"
+#include "token.h"
 #include "key.h"
 
 using namespace std;
@@ -95,19 +96,10 @@ void display() {
 void displayStart() {
     Ghost one;
     Key two;
+    Token three;
     one.completedGhost(one);
     two.completedKey(two);
-    Circle token;
-    Circle tokenLayer;
-    token.setCenter(200,200);
-    token.setRadius(30);
-    token.setColor(1,.6,0);
-    tokenLayer.setCenter(200,200);
-    tokenLayer.setRadius(20);
-    tokenLayer.setColor(1,.9,0);
-
-    token.draw();
-    tokenLayer.draw();
+    three.completedToken(three);
     playGame.draw();
     helpGame.draw();
 

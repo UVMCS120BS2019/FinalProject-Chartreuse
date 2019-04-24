@@ -45,6 +45,7 @@ void Key::drawKey()  {
 }
 
 //Define Public method
+//Uses all the private methods to make the key
 void Key::completedKey(Key key1) {
     key1.createKeySkele();
     key1.addKey();
