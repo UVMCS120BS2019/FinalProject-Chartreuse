@@ -17,6 +17,7 @@ struct color {
     double red;
     double green;
     double blue;
+    double opacity;
 };
 
 class Shape {
@@ -33,7 +34,7 @@ public:
     color getColor();
 
     void setCenter(int chooseX, int chooseY);
-    void setColor(double newRed, double newGreen, double newBlue);
+    void setColor(double newRed, double newGreen, double newBlue, double newOpacity);
     //other and virtual methods
     void moveCenter(int changeX, int changeY);
 

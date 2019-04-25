@@ -4,18 +4,18 @@
 
 #include "ghost.h"
 
-//Variables and vectors
-int x;
-int y;
-Circle head;
-LongSquare leg1;
-Circle halfCircleLeg;
-Circle halfCircleLeg2;
-Circle halfCircleLeg3;
-Circle eye1;
-Circle eye2;
-Circle mouth;
-vector<Shape*> ghost;
+////Variables and vectors
+//int x;
+//int y;
+//Circle head;
+//LongSquare leg1;
+//Circle halfCircleLeg;
+//Circle halfCircleLeg2;
+//Circle halfCircleLeg3;
+//Circle eye1;
+//Circle eye2;
+//Circle mouth;
+//vector<Shape*> ghost;
 
 //Define Private methods
 //This creates all the parts for the ghost and puts them in the right order
@@ -29,13 +29,13 @@ void Ghost::createGhostSkele(){
     halfCircleLeg2.setRadius(10);
     halfCircleLeg3.setCenter(318,340);
     halfCircleLeg3.setRadius(10);
-    eye1.setColor(0,0,0);
+    eye1.setColor(0,0,0,1);
     eye1.setCenter(285,300);
     eye1.setRadius(9);
-    eye2.setColor(0,0,0);
+    eye2.setColor(0,0,0,1);
     eye2.setCenter(315,300);
     eye2.setRadius(9);
-    mouth.setColor(0,0,0);
+    mouth.setColor(0,0,0,1);
     mouth.setCenter(300,320);
     mouth.setRadius(8);
 

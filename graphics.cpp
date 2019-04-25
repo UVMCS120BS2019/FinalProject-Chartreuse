@@ -35,6 +35,9 @@ Button returnToMenu(returnButton, " <- Back to menu");
 //make a character
 Character meghan;
 
+//make ghost
+Ghost ghosty;
+
 // Enum for the different screen
 enum Screen {start, help, game, results};
 Screen window;
@@ -81,13 +84,16 @@ void initGL() {
 void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
-            meghan.move(x, y);
+            meghan.move(0, 5);
             break;
         case GLUT_KEY_LEFT:
+            meghan.move(-5, 0);
             break;
         case GLUT_KEY_RIGHT:
+            meghan.move(5, 0);
             break;
         case GLUT_KEY_UP:
+            meghan.move(0, -5);
             break;
     }
 
@@ -165,6 +171,8 @@ void displayGame() {
     }
 
     meghan.draw();
+    ghosty.completedGhost(ghosty);
+
 
 }
 void displayResults() {
