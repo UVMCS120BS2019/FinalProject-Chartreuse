@@ -17,10 +17,10 @@ vector<Shape*> key;
 void Key::createKeySkele(int x, int y) {
     clearKey();
     keySpace = LongSquare({0.4, 0.4, 0.4}, {x, y}, 60, 30);
-    keyCircle.setColor(1,.8,0);
+    keyCircle.setColor(1,.8,0,1);
     keyCircle.setCenter(x, y - 15);
     keyCircle.setRadius(15);
-    keyOpening.setColor(0,0,0);
+    keyOpening.setColor(0,0,0,1);
     keyOpening.setCenter(x, y - 15);
     keyOpening.setRadius(10);
     base=LongSquare({1,.8,0},{x, y + 5},50, 10);
