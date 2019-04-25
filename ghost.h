@@ -27,6 +27,8 @@ private:
     Circle eye2;
     Circle mouth;
     vector<Shape*> ghost;
+    LongSquare collisionSquare;
+
 
     //Push ghost to the vector in a specific order
     void addGhost();
