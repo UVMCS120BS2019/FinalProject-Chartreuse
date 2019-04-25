@@ -42,7 +42,7 @@ Token three;
 enum Screen {start, help, game, results};
 Screen window;
 
-//
+// vector of longsquares for background tiles
 vector<LongSquare> tiles;
 
 void init() {
