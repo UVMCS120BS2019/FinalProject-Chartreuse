@@ -13,6 +13,7 @@ private:
     point cent;
     unsigned int width;
     unsigned int height;
+    double opacity;
 
 public:
     //constructors
@@ -31,6 +32,7 @@ public:
     double getRed() const;
     double getGreen() const;
     double getBlue() const;
+    double getOpacity() const;
     color getFill() const;
 
     unsigned int getWidth() const;
@@ -38,7 +40,7 @@ public:
     void setWidth(unsigned int width);
     void setHeight(unsigned int height);
 
-    void setColor(double red, double green, double blue);
+    void setColor(double red, double green, double blue, double opacity);
     void setColor(color fill);
     void move(int deltaX, int deltaY);
     void resize(unsigned int height, unsigned int width);

@@ -30,7 +30,7 @@ void Button::draw() {
 
 // Change color of the box when the user is hovering over it
 void Button::hover() {
-    ls.setColor(fill.red + 0.3, fill.green + 0.3, fill.blue + 0.3);
+    ls.setColor(fill.red + 0.3, fill.green + 0.3, fill.blue + 0.3, fill.opacity);
 }
 
 bool Button::isOverlapping(int x, int y) const {

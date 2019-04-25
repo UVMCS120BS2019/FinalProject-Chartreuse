@@ -7,7 +7,7 @@
 #include "graphics.h"
 
 LongSquare::LongSquare() {
-    fill = {0,0,0};
+    fill = {0,0,0,0};
     cent = {0,0};
     height = 30;
     width = 50;
@@ -69,8 +69,11 @@ double LongSquare::getGreen() const {
 double LongSquare::getBlue() const {
     return fill.blue;
 }
-void LongSquare::setColor(double red, double green, double blue) {
-    fill = {red, green, blue};
+double LongSquare::getOpacity() const {
+    return fill.opacity;
+}
+void LongSquare::setColor(double red, double green, double blue, double opacity) {
+    fill = {red, green, blue, opacity};
 }
 void LongSquare::setColor(color fill) {
     this->fill = fill;
@@ -94,7 +97,7 @@ void LongSquare::setHeight(unsigned int height) {
 //DRAWing
 void LongSquare::draw() const {
 
-    glColor3f(getRed(), getGreen(), getBlue());
+    glColor4f(getRed(), getGreen(), getBlue(), getOpacity());
     glBegin(GL_QUADS);
 
     glVertex2i(getLeftX(), getTopY());
