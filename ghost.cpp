@@ -71,3 +71,18 @@ void Ghost::completedGhost(Ghost ghoul){
     ghoul.drawGhost();
 }
 
+void Ghost::ghostMove(double x, double y) {
+    head.moveCenter(x,y);
+    leg1.moveCenter(x,y);
+    halfCircleLeg.moveCenter(x,y);
+    halfCircleLeg2.moveCenter(x,y);
+    halfCircleLeg3.moveCenter(x,y);
+    eye1.moveCenter(x,y);
+    eye2.moveCenter(x,y);
+    mouth.moveCenter(x,y);
+}
+
+void Ghost::track() {
+    while (true) {
+    }
+}
