@@ -34,6 +34,8 @@ void Character::draw() {
     }
 }
 
+
+
 void Character::move(double x, double y) {
     torso1.moveCenter(x,y);
     torso2.moveCenter(x,y);
