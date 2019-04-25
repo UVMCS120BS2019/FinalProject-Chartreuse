@@ -35,7 +35,7 @@ Button returnToMenu(returnButton, " <- Back to menu");
 //make a character
 Character meghan;
 Ghost one;
-Key two;
+Key two(600, 250);
 Token three;
 
 // Enum for the different screen
@@ -185,7 +185,8 @@ void displayGame() {
     meghan.draw();
 
     one.completedGhost(one);
-    two.completedKey(two);
+    two.setLocation(650, 210);
+    two.drawKey();
     three.completedToken(three);
 
 }
