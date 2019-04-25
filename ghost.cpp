@@ -29,13 +29,13 @@ void Ghost::createGhostSkele(){
     halfCircleLeg2.setRadius(12);
     halfCircleLeg3.setCenter(318,340);
     halfCircleLeg3.setRadius(12);
-    eye1.setColor(0,0,0);
+    eye1.setColor(0,0,0,1);
     eye1.setCenter(285,300);
     eye1.setRadius(10);
-    eye2.setColor(0,0,0);
+    eye2.setColor(0,0,0,1);
     eye2.setCenter(315,300);
     eye2.setRadius(10);
-    mouth.setColor(0,0,0);
+    mouth.setColor(0,0,0,1);
     mouth.setCenter(300,320);
     mouth.setRadius(9);
 

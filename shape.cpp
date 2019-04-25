@@ -6,7 +6,7 @@
 
 Shape::Shape() {
     cent = {0,0};
-    fill = {1,1,1};
+    fill = {1,1,1,1};
 }
 
 Shape::Shape(color col, point cent) {
@@ -27,10 +27,11 @@ void Shape::setCenter(int chooseX, int chooseY) {
     cent.y = chooseY;
 }
 
-void Shape::setColor(double newRed, double newGreen, double newBlue) {
+void Shape::setColor(double newRed, double newGreen, double newBlue, double newOpacity) {
     fill.red = newRed;
     fill.green = newGreen;
     fill.blue = newBlue;
+    fill.opacity = newOpacity;
 }
 
 void Shape::moveCenter(int changeX, int changeY) {

@@ -17,6 +17,7 @@ private:
     //vector of body parts
     vector<Shape*> body;
     Circle torso1, torso2, leg1, leg2, head, nose, tail;
+    LongSquare collisionSquare;
 
 public:
     //constructors

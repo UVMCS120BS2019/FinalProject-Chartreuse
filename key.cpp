@@ -15,10 +15,10 @@ vector<Shape*> key;
 //Define private methods
 //This method sets up the skeleton for the key 
 void Key::createKeySkele() {
-    keyCircle.setColor(1,.8,0);
+    keyCircle.setColor(1,.8,0,1);
     keyCircle.setCenter(500,300);
     keyCircle.setRadius(15);
-    keyOpening.setColor(0,0,0);
+    keyOpening.setColor(0,0,0,1);
     keyOpening.setCenter(500,300);
     keyOpening.setRadius(10);
     base=LongSquare({1,.8,0},{500,320},50, 10);
