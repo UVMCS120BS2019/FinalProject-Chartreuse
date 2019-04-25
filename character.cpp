@@ -8,7 +8,7 @@
 using namespace std;
 
 Character::Character() {
-    collisionSquare = LongSquare({0,0,1,0}, {35, 105}, 32,37);
+    collisionSquare = LongSquare({0.4,0.4,0.4,0.0}, {35, 105}, 32,37);
     torso1 = Circle({1,1,1}, {30, 110}, 10);
     torso2 = Circle({1,1,1}, {35, 110}, 10);
     leg1 = Circle({0,0,0}, {42, 120}, 3);

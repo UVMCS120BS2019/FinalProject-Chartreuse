@@ -21,23 +21,26 @@ private:
     LongSquare base;
     LongSquare topKey;
     LongSquare bottomKey;
+    LongSquare keySpace;
     vector<Shape*> key;
 
-    //Create the key skeleton
-    void createKeySkele();
+    //Create the key skeleton using center (x, y)
+    void createKeySkele(int x, int y);
 
     //Push key to the vector in a specific order
     void addKey();
 
-    //Construct key
-    void drawKey();
-
+    // clears everything in key vector
+    void clearKey();
 
 public:
 
+    // constructors
+    Key();
+    Key(int x, int y);
 
-    //Place the completed key together
-    void completedKey(Key key1);
+    // draw key
+    void drawKey();
 
 
     //STILL THINKING ABOUT
@@ -48,7 +51,7 @@ public:
 
     //Setters
     //Set the location of the key
-    //int setLocation(int x, int y);
+    void setLocation(int x, int y);
 
     //Create a method to move the key
     //void  keyMove();

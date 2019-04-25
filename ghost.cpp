@@ -21,23 +21,23 @@
 //This creates all the parts for the ghost and puts them in the right order
 void Ghost::createGhostSkele(){
     head.setCenter(300,300);
-    head.setRadius(30);
-    leg1=LongSquare({1,1,1},{300,320},50, 60);
-    halfCircleLeg.setCenter(282,340);
-    halfCircleLeg.setRadius(12);
-    halfCircleLeg2.setCenter(300,341);
-    halfCircleLeg2.setRadius(12);
-    halfCircleLeg3.setCenter(318,340);
-    halfCircleLeg3.setRadius(12);
+    head.setRadius(28);
+    leg1=LongSquare({1,1,1},{300,320},33, 57);
+    halfCircleLeg.setCenter(282,333);
+    halfCircleLeg.setRadius(10);
+    halfCircleLeg2.setCenter(301,334);
+    halfCircleLeg2.setRadius(10);
+    halfCircleLeg3.setCenter(318,333);
+    halfCircleLeg3.setRadius(10);
     eye1.setColor(0,0,0,1);
     eye1.setCenter(285,300);
-    eye1.setRadius(10);
+    eye1.setRadius(8.5);
     eye2.setColor(0,0,0,1);
     eye2.setCenter(315,300);
-    eye2.setRadius(10);
+    eye2.setRadius(8.5);
     mouth.setColor(0,0,0,1);
     mouth.setCenter(300,320);
-    mouth.setRadius(9);
+    mouth.setRadius(7.5);
 
 }
 

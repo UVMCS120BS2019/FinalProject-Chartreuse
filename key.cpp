@@ -14,27 +14,48 @@ vector<Shape*> key;
 
 //Define private methods
 //This method sets up the skeleton for the key 
-void Key::createKeySkele() {
+void Key::createKeySkele(int x, int y) {
+    clearKey();
+    keySpace = LongSquare({0.4, 0.4, 0.4}, {x, y}, 60, 30);
     keyCircle.setColor(1,.8,0,1);
-    keyCircle.setCenter(500,300);
+    keyCircle.setCenter(x, y - 15);
     keyCircle.setRadius(15);
     keyOpening.setColor(0,0,0,1);
-    keyOpening.setCenter(500,300);
+    keyOpening.setCenter(x, y - 15);
     keyOpening.setRadius(10);
-    base=LongSquare({1,.8,0},{500,320},50, 10);
-    topKey=LongSquare({1,.8,0},{510,325},6, 10);
-    bottomKey=LongSquare({1,.8,0},{510,338},6, 10);
+    base=LongSquare({1,.8,0},{x, y + 5},50, 10);
+    topKey=LongSquare({1,.8,0},{x + 10, y + 10},6, 10);
+    bottomKey=LongSquare({1,.8,0},{x + 10, y + 23},6, 10);
+    addKey();
 }
 
 
 //This method adds the parts of the key to the vector
 void Key::addKey() {
+    key.push_back(new LongSquare(keySpace));
     key.push_back(new Circle(keyCircle));
     key.push_back(new LongSquare(base));
     key.push_back(new LongSquare(topKey));
     key.push_back(new LongSquare(bottomKey));
     key.push_back(new Circle(keyOpening));
+}
 
+// clears key vector
+void Key::clearKey() {
+    key.clear();
+}
+
+Key::Key() {
+    createKeySkele(500, 315);
+}
+
+Key::Key(int x, int y) {
+    createKeySkele(x, y);
+}
+
+// changes location of key based on center (x,y)
+void Key::setLocation(int x, int y) {
+    createKeySkele(x, y);
 }
 
 //This method draws the key
@@ -44,10 +65,3 @@ void Key::drawKey()  {
     }
 }
 
-//Define Public method
-//Uses all the private methods to make the key
-void Key::completedKey(Key key1) {
-    key1.createKeySkele();
-    key1.addKey();
-    key1.drawKey();
-}
