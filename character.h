@@ -16,8 +16,7 @@ class Character {
 private:
     //vector of body parts
     vector<Shape*> body;
-    LongSquare torso, arms, legs;
-    Circle head;
+    Circle torso1, torso2, leg1, leg2, head, nose, tail;
 
 public:
     //constructors
