@@ -35,6 +35,8 @@ public:
 
     unsigned int getWidth() const;
     unsigned int getHeight() const;
+    void setWidth(unsigned int width);
+    void setHeight(unsigned int height);
 
     void setColor(double red, double green, double blue);
     void setColor(color fill);

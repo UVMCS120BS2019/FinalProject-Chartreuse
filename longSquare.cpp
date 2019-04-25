@@ -84,6 +84,13 @@ unsigned int LongSquare::getWidth() const {
     return width;
 }
 
+void LongSquare::setWidth(unsigned int width)  {
+    this-> width = width;
+}
+void LongSquare::setHeight(unsigned int height) {
+    this -> height = height;
+}
+
 //DRAWing
 void LongSquare::draw() const {
 
