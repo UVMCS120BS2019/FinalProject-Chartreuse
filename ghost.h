@@ -20,6 +20,7 @@ private:
     int y;
     Circle head;
     LongSquare leg1;
+    LongSquare collisionSquareGhoul;
     Circle halfCircleLeg;
     Circle halfCircleLeg2;
     Circle halfCircleLeg3;
@@ -27,7 +28,7 @@ private:
     Circle eye2;
     Circle mouth;
     vector<Shape*> ghost;
-    LongSquare collisionSquare;
+
 
 
     //Push ghost to the vector in a specific order
@@ -37,8 +38,10 @@ private:
     void drawGhost();
 
 public:
+    Ghost();
+    Ghost(const LongSquare &collisionSquareGhoul);
 
-    //Create ghost skeleton
+//Create ghost skeleton
     void createGhostSkele();
 
 

@@ -47,6 +47,8 @@ void Character::move(double x, double y) {
     collisionSquare.move(x,y);
 }
 
+
+
 //void Character::resetPosition() {
 //    torso.move(30,100);
 //    arms.move(30,100);

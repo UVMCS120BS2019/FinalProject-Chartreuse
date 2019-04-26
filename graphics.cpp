@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
-
+#include "longSquare.h"
 #include "graphics.h"
 #include "button.h"
 #include "circle.h"
@@ -153,7 +153,7 @@ void displayStart() {
     helpGame.draw();
 
 }
-void displayHelp(){ .
+void displayHelp(){
     string helpMsg1 = "Having trouble?";
     glColor3f(1.0f, 1.0f, 1.0f);
     glRasterPos2i(WIDTH/2-120, HEIGHT/2);
@@ -256,7 +256,6 @@ void mouse(int button, int state, int x, int y) {
     }
 
 }
-
 
 int main(int argc, char** argv) {
 

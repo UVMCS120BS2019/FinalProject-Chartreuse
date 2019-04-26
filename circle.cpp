@@ -1,7 +1,7 @@
 //
 // Created by Mary Woolley on 2019-04-21.
 //
-
+#include "graphics.h"
 #include "circle.h"
 #define _USE_MATH_DEFINES
 

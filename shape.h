@@ -5,7 +5,7 @@
 #ifndef FINALPROJECT_CHARTREUSE_SHAPES_H
 #define FINALPROJECT_CHARTREUSE_SHAPES_H
 
-#include "graphics.h"
+//#include "graphics.h"
 
 //make points
 struct point {
@@ -34,7 +34,7 @@ public:
     color getColor();
 
     void setCenter(int chooseX, int chooseY);
-    void setColor(double newRed, double newGreen, double newBlue, double newOpacity);
+    virtual void setColor(double newRed, double newGreen, double newBlue, double newOpacity);
     //other and virtual methods
     void moveCenter(int changeX, int changeY);
 

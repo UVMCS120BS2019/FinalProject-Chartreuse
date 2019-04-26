@@ -1,8 +1,9 @@
 //
 // Created by vgwse on 4/23/2019.
 //
-
+#include "graphics.h"
 #include "ghost.h"
+#include "longSquare.h"
 
 //Variables and vectors
 int x;
@@ -22,9 +23,9 @@ LongSquare collisionSquare;
 //This creates all the parts for the ghost and puts them in the right order
 void Ghost::createGhostSkele(){
     head.setCenter(300,300);
-    collisionSquare = LongSquare({0.4, 0.4, 0.4, 0}, {100,100}, 20,30);
+//    collisionSquareGhoul = LongSquare({0.4, 0.4, 0.4, 0}, {100,100}, 20, 30);
     head.setRadius(28);
-    leg1=LongSquare({1,1,1,1},{300,320},33, 57);
+    leg1= LongSquare({1,1,1,1},{300,320},33, 57);
     halfCircleLeg.setCenter(282,333);
     halfCircleLeg.setRadius(10);
     halfCircleLeg2.setCenter(301,334);
@@ -48,6 +49,7 @@ void Ghost::createGhostSkele(){
 void Ghost::addGhost(){
     ghost.push_back(new Circle(head));
     ghost.push_back(new LongSquare(leg1));
+    ghost.push_back(new LongSquare(collisionSquareGhoul));
     ghost.push_back(new Circle(halfCircleLeg));
     ghost.push_back(new Circle(halfCircleLeg2));
     ghost.push_back(new Circle(halfCircleLeg3));
@@ -76,6 +78,7 @@ void Ghost::completedGhost(Ghost ghoul){
 void Ghost::ghostMove(double x, double y) {
     head.moveCenter(x,y);
     leg1.moveCenter(x,y);
+    collisionSquareGhoul.moveCenter(x,y);
     halfCircleLeg.moveCenter(x,y);
     halfCircleLeg2.moveCenter(x,y);
     halfCircleLeg3.moveCenter(x,y);
@@ -87,3 +90,7 @@ void Ghost::ghostMove(double x, double y) {
 void Ghost::track() {
 
 }
+Ghost::Ghost(){
+
+}
+//Ghost::Ghost(const LongSquare &collisionSquareGhoul) : collisionSquareGhoul(collisionSquareGhoul) {}

@@ -32,7 +32,7 @@ public:
     int getBottomY();
     int getCentY();
 
-
+    bool collisionCheck(Character &meghan);
 };
 
 

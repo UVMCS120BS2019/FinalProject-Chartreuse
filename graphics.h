@@ -16,7 +16,9 @@
 #include <GLUT/glut.h>
 #else
 #include <GL/glut.h>
+
 #endif
+#include "character.h"
 
 //using GLUT
 void init();
@@ -44,6 +46,8 @@ void timer(int dummy);
 
 // Handle mouse button pressed and released events
 void mouse(int button, int state, int x, int y);
+
+//bool collisionCheck(Ghost ghost);
 
 #endif /* graphics_h */
 
