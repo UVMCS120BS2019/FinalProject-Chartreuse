@@ -35,7 +35,7 @@ Button returnToMenu(returnButton, " <- Back to menu");
 //make a character
 Character meghan;
 Ghost one;
-Key two(600, 250);
+Key key1(600, 250);
 Token three;
 
 //make ghost
@@ -98,6 +98,8 @@ void init() {
         tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 230}, 20, 20));
     }
     // end adding squares to tile vector
+
+    meghan.setBackground(tiles);
 }
 
 void initGL() {
@@ -193,8 +195,8 @@ void displayGame() {
 
 
     one.completedGhost(one);
-    two.setLocation(650, 210);
-    two.drawKey();
+    key1.setLocation(650, 210);
+    key1.drawKey();
     three.completedToken(three);
 
 }
