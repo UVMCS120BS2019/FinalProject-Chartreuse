@@ -14,10 +14,10 @@ vector<Shape*> token;
 void Token::createTokenSkele()  {
     tokenCircle.setCenter(200,200);
     tokenCircle.setRadius(30);
-    tokenCircle.setColor(1,.6,0);
+    tokenCircle.setColor(1,.6,0,1);
     tokenLayer.setCenter(200,200);
     tokenLayer.setRadius(20);
-    tokenLayer.setColor(1,.9,0);
+    tokenLayer.setColor(1,.9,0,1);
 }
 
 
