@@ -37,10 +37,10 @@ public:
 
     // boundary testing functions
     void testBounds();
-    void testRightBounds();
-    void testLeftBounds();
-    void testUpperBounds();
-    void testLowerBounds();
+    bool testRightBounds();
+    bool testLeftBounds();
+    bool testUpperBounds();
+    bool testLowerBounds();
 
 
     //getters and setters

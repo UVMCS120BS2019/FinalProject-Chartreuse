@@ -111,15 +111,19 @@ void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
             meghan.move(0, 5);
+            meghan.testBounds();
             break;
         case GLUT_KEY_LEFT:
             meghan.move(-5, 0);
+            meghan.testBounds();
             break;
         case GLUT_KEY_RIGHT:
             meghan.move(5, 0);
+            meghan.testBounds();
             break;
         case GLUT_KEY_UP:
             meghan.move(0, -5);
+            meghan.testBounds();
             break;
     }
 
