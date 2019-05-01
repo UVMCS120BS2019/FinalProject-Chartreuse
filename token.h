@@ -23,15 +23,15 @@ private:
 
 
     //Create the token skeleton
-    void createTokenSkele();
+    void createTokenSkele(int x, int y);
 
     //Push token to the vector in a specific order
-    void addToken();
 
-    //Construct token
-    void drawToken();
+
 
 public:
+    //Construct token
+    void drawToken();
 
     //Place the completed token together
     void completedToken(Token token1);
@@ -44,7 +44,7 @@ public:
 
     //Setters
     //Set the location of the token
-    //int setLocation(int x, int y);
+    void setLocation(int x, int y);
 
     //Create a method to move the token
     //void  tokenMove();

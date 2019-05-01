@@ -83,7 +83,12 @@ void Ghost::ghostMove(double x, double y) {
     eye2.moveCenter(x,y);
     mouth.moveCenter(x,y);
 }
-
-void Ghost::track() {
-
-}
+//
+//void Ghost::track(int x) {
+//    while (true) {
+//        if (x < 800) {
+//
+//
+//        }
+//    }
+//}

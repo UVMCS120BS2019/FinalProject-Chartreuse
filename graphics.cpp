@@ -190,12 +190,14 @@ void displayGame() {
 
     meghan.draw();
     ghosty.completedGhost(ghosty);
+//    while (window == game) {
+//        ghosty.track();
+//    }
 
-
-    one.completedGhost(one);
     two.setLocation(650, 210);
     two.drawKey();
-    three.completedToken(three);
+    three.setLocation(200,200);
+    three.drawToken();
 
 }
 void displayResults() {
