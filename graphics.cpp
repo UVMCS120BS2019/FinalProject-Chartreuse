@@ -36,7 +36,7 @@ Button returnToMenu(returnButton, " <- Back to menu");
 Character meghan;
 Ghost one;
 Key key1(600, 250);
-Token three;
+Token token1;
 
 //make ghost
 Ghost ghosty;
@@ -200,8 +200,9 @@ void displayGame() {
 
     one.completedGhost(one);
     key1.setLocation(650, 210);
-    key1.setLocation(200,200);
-    three.drawToken();
+    key1.drawKey();
+    token1.setLocation(200,200);
+    token1.drawToken();
 
 }
 void displayResults() {
