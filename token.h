@@ -36,7 +36,7 @@ public:
     //Place the completed token together
     void completedToken(Token token1);
 
-    //STILL THINKING ABOUT
+    //TODO::STILL THINKING ABOUT
     //Getters
     //Get the location of the token
     //int getLocation(int x, int y);

@@ -13,10 +13,10 @@ vector<Shape*> token;
 //This method sets up the skeleton for the token 
 void Token::createTokenSkele(int x, int y)  {
     tokenCircle.setCenter(x,y);
-    tokenCircle.setRadius(30);
+    tokenCircle.setRadius(15);
     tokenCircle.setColor(1,.6,0,1);
     tokenLayer.setCenter(x,y);
-    tokenLayer.setRadius(20);
+    tokenLayer.setRadius(10);
     tokenLayer.setColor(1,.9,0,1);
 
     token.emplace_back(&tokenCircle);

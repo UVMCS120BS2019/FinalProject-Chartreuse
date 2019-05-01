@@ -37,6 +37,8 @@ Character meghan;
 Ghost one;
 Key key1(600, 250);
 Token token1;
+Token token2;
+Token token3;
 
 //make ghost
 Ghost ghosty;
@@ -197,11 +199,14 @@ void displayGame() {
     meghan.draw();
     ghosty.completedGhost(ghosty);
 
-
     one.completedGhost(one);
     key1.setLocation(650, 210);
     key1.drawKey();
-    token1.setLocation(200,200);
+    token1.setLocation(600,430);
+    token1.drawToken();
+    token1.setLocation(660,430);
+    token1.drawToken();
+    token1.setLocation(720,430);
     token1.drawToken();
 
 }
