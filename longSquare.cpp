@@ -94,6 +94,15 @@ void LongSquare::setHeight(unsigned int height) {
     this -> height = height;
 }
 
+bool LongSquare::inSquare(point randomPoint) {
+    if (randomPoint.x <= getRightX() && randomPoint.x >= getLeftX()
+        && randomPoint.y >= getTopY() && randomPoint.y <= getBottomY()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 //DRAWing
 void LongSquare::draw() const {
 

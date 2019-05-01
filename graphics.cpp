@@ -35,7 +35,7 @@ Button returnToMenu(returnButton, " <- Back to menu");
 //make a character
 Character meghan;
 Ghost one;
-Key two(600, 250);
+Key key1(600, 250);
 Token three;
 
 //make ghost
@@ -98,6 +98,8 @@ void init() {
         tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 230}, 20, 20));
     }
     // end adding squares to tile vector
+
+    meghan.setBackground(tiles);
 }
 
 void initGL() {
@@ -108,16 +110,20 @@ void initGL() {
 void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
-            meghan.move(0,7);
+            meghan.move(0, 5);
+            meghan.testBounds();
             break;
         case GLUT_KEY_LEFT:
-            meghan.move(-7,0);
+            meghan.move(-5, 0);
+            meghan.testBounds();
             break;
         case GLUT_KEY_RIGHT:
-            meghan.move(7,0);
+            meghan.move(5, 0);
+            meghan.testBounds();
             break;
         case GLUT_KEY_UP:
-            meghan.move(0,-7);
+            meghan.move(0, -5);
+            meghan.testBounds();
             break;
     }
 
@@ -190,13 +196,11 @@ void displayGame() {
 
     meghan.draw();
     ghosty.completedGhost(ghosty);
-//    while (window == game) {
-//        ghosty.track();
-//    }
 
-    two.setLocation(650, 210);
-    two.drawKey();
-    three.setLocation(200,200);
+
+    one.completedGhost(one);
+    key1.setLocation(650, 210);
+    key1.setLocation(200,200);
     three.drawToken();
 
 }
