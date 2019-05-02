@@ -122,10 +122,7 @@ bool Character::testLowerBounds() {
     return false;
 }
 
-//int Character::getBottomY() {
-//
-//}
-////
-//int Character::getCentY() {
-//
-//}
+
+int Character::getFront() {
+    return collisionSquare.getRightX();
+}

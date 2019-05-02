@@ -214,12 +214,13 @@ void displayGame() {
     one.completedGhost(one);
     key1.setLocation(650, 210);
     key1.drawKey();
-    token1.setLocation(600,430);
+    //token1.setLocation(600,430);
+    token1.setLocation(100,100);
     token1.drawToken();
-    token1.setLocation(660,430);
-    token1.drawToken();
-    token1.setLocation(720,430);
-    token1.drawToken();
+    token2.setLocation(660,430);
+    token2.drawToken();
+    token3.setLocation(720,430);
+    token3.drawToken();
 
 }
 void displayResults() {
@@ -255,11 +256,13 @@ void kbd(unsigned char key, int x, int y){
 }
 
 void timer(int dummy) {
-//    if (window ==game) {
-//        if (token1.tokenCollision(0, meghan.getCentY())) {
-//            score +=1;
-//        }
-//    }
+    if (window ==game) {
+        if (token1.tokenCollision(0,meghan.getFront())) {
+            score +=1;
+
+            cout << score;
+        }
+    }
     //ghosty.ghostMove(50,0);
     glutPostRedisplay();
     glutTimerFunc(30, timer, dummy);
@@ -303,7 +306,7 @@ int main(int argc, char** argv) {
 
     init();
 
-    glutInit(&argc, argv);          // Initialize GLUT
+    glutInit(&argc, argv);// Initialize GLUT
 
     glutInitDisplayMode(GLUT_RGBA);
 

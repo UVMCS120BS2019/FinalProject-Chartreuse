@@ -39,12 +39,12 @@ void Token::setLocation(int x, int y) {
 }
 
 bool Token::tokenCollision(int x, int y) {
-    for (int i = 0; i < token.size(); i++) {
-        if(x< collisionCheck.getRightX() && x < collisionCheck.getLeftX()) {
-            if(y < collisionCheck.getBottomY() && y > collisionCheck.getTopY()) {
-                return true;
-            }
+
+    if(x < collisionCheck.getRightX() && x < collisionCheck.getLeftX()) {
+        if(y < collisionCheck.getBottomY() && y > collisionCheck.getTopY()) {
+            return true;
         }
     }
     return false;
 }
+
