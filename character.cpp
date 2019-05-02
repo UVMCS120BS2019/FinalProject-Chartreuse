@@ -61,20 +61,20 @@ void Character::move(double x, double y) {
 
 // boundary testing functions
 void Character::testBounds() {
-    if(!testRightBounds()) {
-        move(-5, 0);
+    while (!testRightBounds()) {
+        move(-1, 0);
     }
 
-    if(!testLeftBounds()) {
-        move(5,0);
+    while (!testLeftBounds()) {
+        move(1, 0);
     }
 
-    if(!testUpperBounds()) {
-        move(0, 5);
+    while (!testUpperBounds()) {
+        move(0, 1);
     }
 
-    if(!testLowerBounds()) {
-        move(0, -5);
+    while (!testLowerBounds()) {
+        move(0, -1);
     }
 }
 
