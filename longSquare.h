@@ -46,6 +46,8 @@ public:
     void resize(unsigned int height, unsigned int width);
     void setCent(int x, int y);
 
+    bool inSquare(point randomPoint);
+
     virtual void draw() const override;
     //void draw() const;
 };

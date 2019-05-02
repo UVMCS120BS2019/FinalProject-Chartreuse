@@ -26,6 +26,11 @@ Character::Character() {
     body.emplace_back(&nose);
     body.emplace_back(&tail);
 
+    setBackground({});
+}
+
+void Character::setBackground(vector<LongSquare> background) {
+    backgroundMaze = background;
 }
 
 void Character::draw() {
@@ -33,6 +38,8 @@ void Character::draw() {
         shape-> draw();
     }
 }
+
+
 
 void Character::move(double x, double y) {
     torso1.moveCenter(x,y);
@@ -51,6 +58,69 @@ void Character::move(double x, double y) {
 //    legs.move(30,100);
 //    head.moveCenter(30,100);
 //}
+
+// boundary testing functions
+void Character::testBounds() {
+    while (!testRightBounds()) {
+        move(-1, 0);
+    }
+
+    while (!testLeftBounds()) {
+        move(1, 0);
+    }
+
+    while (!testUpperBounds()) {
+        move(0, 1);
+    }
+
+    while (!testLowerBounds()) {
+        move(0, -1);
+    }
+}
+
+bool Character::testRightBounds() {
+    point topRightPoint = {collisionSquare.getRightX(), collisionSquare.getTopY()};
+    point bottomRightPoint = {collisionSquare.getRightX(), collisionSquare.getBottomY()};
+    for (LongSquare i : backgroundMaze) {
+        if (i.inSquare(topRightPoint) || i.inSquare(bottomRightPoint)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Character::testLeftBounds() {
+    point topLeftPoint = {collisionSquare.getLeftX(), collisionSquare.getTopY()};
+    point bottomLeftPoint = {collisionSquare.getLeftX(), collisionSquare.getBottomY()};
+    for (LongSquare i : backgroundMaze) {
+        if (i.inSquare(topLeftPoint) || i.inSquare(bottomLeftPoint)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Character::testUpperBounds() {
+    point topRightPoint = {collisionSquare.getRightX(), collisionSquare.getTopY()};
+    point topLeftPoint = {collisionSquare.getLeftX(), collisionSquare.getTopY()};
+    for (LongSquare i : backgroundMaze) {
+        if (i.inSquare(topRightPoint) || i.inSquare(topLeftPoint)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Character::testLowerBounds() {
+    point bottomRightPoint = {collisionSquare.getRightX(), collisionSquare.getBottomY()};
+    point bottomLeftPoint = {collisionSquare.getLeftX(), collisionSquare.getBottomY()};
+    for (LongSquare i : backgroundMaze) {
+        if (i.inSquare(bottomRightPoint) || i.inSquare(bottomLeftPoint)) {
+            return true;
+        }
+    }
+    return false;
+}
 
 //int Character::getBottomY() {
 //
