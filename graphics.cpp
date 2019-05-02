@@ -31,6 +31,12 @@ Button helpGame(helpButton, "Get Help");
 //return to menu button
 LongSquare returnButton({0,0,0}, {WIDTH/5, HEIGHT/5}, 120, 50);
 Button returnToMenu(returnButton, " <- Back to menu");
+// play again button
+LongSquare playAgainBox({0,0,0}, {WIDTH/2, HEIGHT/2}, 120, 50);
+Button playAgainButton(playAgainBox, "Play Again");
+// play again button
+LongSquare backToMenuBox({0,0,0}, {WIDTH/2, HEIGHT/2 + 70}, 120, 50);
+Button backToMenuButton(backToMenuBox, "Back to Menu");
 
 //make a character
 Character meghan;
@@ -40,6 +46,9 @@ Token token1;
 
 //make ghost
 Ghost ghosty;
+
+// bool for if game won
+bool gameWon = false;
 
 // Enum for the different screen
 enum Screen {start, help, game, results};
@@ -157,8 +166,8 @@ void display() {
 void displayStart() {
     playGame.draw();
     helpGame.draw();
-
 }
+
 void displayHelp(){
     string helpMsg1 = "Having trouble?";
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -206,7 +215,25 @@ void displayGame() {
 
 }
 void displayResults() {
+    string resultsMessage;
+    if (gameWon == false) {
+        resultsMessage = "You Died";
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 100);
+        for (char &letter : resultsMessage) {
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+        }
+    } else {
+        resultsMessage = "You Won !";
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 100);
+        for (char &letter : resultsMessage) {
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+        }
+    }
 
+    playAgainButton.draw();
+    backToMenuButton.draw();
 }
 
 //make the cursor work on the window
@@ -251,6 +278,7 @@ void mouse(int button, int state, int x, int y) {
             }
         }
     }
+
     if (window == help) {
         if (returnToMenu.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
             window = start;
@@ -262,6 +290,31 @@ void mouse(int button, int state, int x, int y) {
         }
     }
 
+    if (window == results) {
+        if (playAgainButton.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
+            window = game;
+            gameWon = false;
+            meghan.resetPosition();
+            if (playAgainButton.isOverlapping(x,y)) {
+                if(button == GLUT_LEFT_BUTTON) {
+                    window = game;
+                    gameWon = false;
+                    meghan.resetPosition();
+                }
+            }
+        } else if (backToMenuButton.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
+            window = start;
+            gameWon = false;
+            meghan.resetPosition();
+            if (backToMenuButton.isOverlapping(x,y)) {
+                if(button == GLUT_LEFT_BUTTON) {
+                    window = start;
+                    gameWon = false;
+                    meghan.resetPosition();
+                }
+            }
+        }
+    }
 }
 
 
