@@ -256,10 +256,13 @@ void kbd(unsigned char key, int x, int y){
 }
 
 void timer(int dummy) {
+
+
     if (window ==game) {
+
         if (token1.tokenCollision(0,meghan.getFront())) {
             score +=1;
-
+            token1.seeThru();
             cout << score;
         }
     }

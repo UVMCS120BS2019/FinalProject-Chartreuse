@@ -25,6 +25,7 @@ public:
 
     //virtual methods
     virtual void draw() const override;
+
 };
 
 

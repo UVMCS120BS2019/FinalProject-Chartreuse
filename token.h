@@ -50,7 +50,11 @@ public:
     void setLocation(int x, int y);
 
     //Create a method for the color of the token to change
-    void tokenColor();
+    void seeThru();
+
+
+
+    ~Token();
 
 };
 

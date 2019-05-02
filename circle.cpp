@@ -32,7 +32,7 @@ void Circle::draw() const {
     float radius = this->radius;
     float xGen, yGen;
 
-    glColor3f(fill.red, fill.green, fill.blue);
+    glColor4f(fill.red, fill.green, fill.blue, fill.opacity);
     //for all 360 degrees, use sin and cos to determine x and y
     for(int angle = 0; angle <= 360; angle++){
         xGen = cent.x + float(cos(angle*(pi/180)) * radius);
@@ -44,3 +44,4 @@ void Circle::draw() const {
     glEnd();
 
 }
+

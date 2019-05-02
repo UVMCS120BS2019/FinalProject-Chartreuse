@@ -41,10 +41,20 @@ void Token::setLocation(int x, int y) {
 bool Token::tokenCollision(int x, int y) {
 
     if(x < collisionCheck.getRightX() && x < collisionCheck.getLeftX()) {
-        if(y < collisionCheck.getBottomY() && y > collisionCheck.getTopY()) {
+        if(y < collisionCheck.getBottomY() && y> collisionCheck.getTopY()) {
             return true;
         }
     }
     return false;
 }
 
+
+void Token::seeThru() {
+    tokenCircle.setColor(0,0,0,0);
+    tokenLayer.setColor(0,0,0,0);
+
+}
+
+Token::~Token() {
+
+}

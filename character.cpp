@@ -9,13 +9,13 @@ using namespace std;
 
 Character::Character() {
     collisionSquare = LongSquare({0.4,0.4,0.4,0.0}, {35, 105}, 32,37);
-    torso1 = Circle({1,1,1}, {30, 110}, 10);
-    torso2 = Circle({1,1,1}, {35, 110}, 10);
-    leg1 = Circle({0,0,0}, {42, 120}, 3);
-    leg2 = Circle({0,0,0}, {23, 120}, 3);
-    head = Circle({1,1,1}, {43, 97}, 8);
-    nose = Circle({0,0,0}, {51, 97}, 3);
-    tail = Circle({0,0,0}, {20, 100}, 3);
+    torso1 = Circle({1,1,1, 1}, {30, 110}, 10);
+    torso2 = Circle({1,1,1, 1}, {35, 110}, 10);
+    leg1 = Circle({0,0,0, 1}, {42, 120}, 3);
+    leg2 = Circle({0,0,0, 1}, {23, 120}, 3);
+    head = Circle({1,1,1, 1}, {43, 97}, 8);
+    nose = Circle({0,0,0, 1}, {51, 97}, 3);
+    tail = Circle({0,0,0, 1}, {20, 100}, 3);
 
     body.emplace_back(&collisionSquare);
     body.emplace_back(&torso1);
