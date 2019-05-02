@@ -17,6 +17,7 @@ class Token {
 
 private:
     //Variables and vectors
+    LongSquare collisionCheck;
     Circle tokenCircle;
     Circle tokenLayer;
     vector<Shape*> token;
@@ -34,23 +35,22 @@ public:
     void drawToken();
 
     //Place the completed token together
-    void completedToken(Token token1);
 
-    //TODO::STILL THINKING ABOUT
+    //TODO::Character collisions with the tokens and wracking up a score
+
     //Getters
     //Get the location of the token
     //int getLocation(int x, int y);
 
+    //is there a collision with the character?
+    bool tokenCollision(int x, int y);
 
     //Setters
     //Set the location of the token
     void setLocation(int x, int y);
 
-    //Create a method to move the token
-    //void  tokenMove();
-
     //Create a method for the color of the token to change
-    //void tokenColor();
+    void tokenColor();
 
 };
 

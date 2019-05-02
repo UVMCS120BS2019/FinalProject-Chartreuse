@@ -4,10 +4,6 @@
 
 #include "token.h"
 
-//Variables and vectors
-Circle tokenCircle;
-Circle tokenLayer;
-vector<Shape*> token;
 
 //Define private methods
 //This method sets up the skeleton for the token 
@@ -18,7 +14,12 @@ void Token::createTokenSkele(int x, int y)  {
     tokenLayer.setCenter(x,y);
     tokenLayer.setRadius(10);
     tokenLayer.setColor(1,.9,0,1);
+    collisionCheck.setCent(x,y);
+    collisionCheck.setHeight(15);
+    collisionCheck.setWidth(15);
+    collisionCheck.setColor(0,0,0,0);
 
+    token.emplace_back(&collisionCheck);
     token.emplace_back(&tokenCircle);
     token.emplace_back(&tokenLayer);
 }
@@ -35,4 +36,15 @@ void Token::drawToken()  {
 
 void Token::setLocation(int x, int y) {
     createTokenSkele(x,y);
+}
+
+bool Token::tokenCollision(int x, int y) {
+    for (int i = 0; i < token.size(); i++) {
+        if(x< collisionCheck.getRightX() && x < collisionCheck.getLeftX()) {
+            if(y < collisionCheck.getBottomY() && y > collisionCheck.getTopY()) {
+                return true;
+            }
+        }
+    }
+    return false;
 }

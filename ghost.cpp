@@ -7,16 +7,7 @@
 //Variables and vectors
 int x;
 int y;
-Circle head;
-LongSquare leg1;
-Circle halfCircleLeg;
-Circle halfCircleLeg2;
-Circle halfCircleLeg3;
-Circle eye1;
-Circle eye2;
-Circle mouth;
-vector<Shape*> ghost;
-LongSquare collisionSquare;
+
 
 //Define Private methods
 //This creates all the parts for the ghost and puts them in the right order
@@ -74,21 +65,17 @@ void Ghost::completedGhost(Ghost ghoul){
 }
 
 void Ghost::ghostMove(double x, double y) {
-    head.moveCenter(x,y);
-    leg1.moveCenter(x,y);
-    halfCircleLeg.moveCenter(x,y);
-    halfCircleLeg2.moveCenter(x,y);
-    halfCircleLeg3.moveCenter(x,y);
-    eye1.moveCenter(x,y);
-    eye2.moveCenter(x,y);
-    mouth.moveCenter(x,y);
+    for(Shape* &ghoul:ghost) {
+        ghoul->moveCenter(x,y);
+    }
+//    head.moveCenter(x,y);
+//    leg1.moveCenter(x,y);
+//    halfCircleLeg.moveCenter(x,y);
+//    halfCircleLeg2.moveCenter(x,y);
+//    halfCircleLeg3.moveCenter(x,y);
+//    eye1.moveCenter(x,y);
+//    eye2.moveCenter(x,y);
+//    mouth.moveCenter(x,y);
 }
 //
-//void Ghost::track(int x) {
-//    while (true) {
-//        if (x < 800) {
-//
-//
-//        }
-//    }
-//}
+

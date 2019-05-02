@@ -23,9 +23,9 @@ void Key::createKeySkele(int x, int y) {
     keyOpening.setColor(0,0,0,1);
     keyOpening.setCenter(x, y - 15);
     keyOpening.setRadius(10);
-    base=LongSquare({1,.8,0},{x, y + 5},50, 10);
-    topKey=LongSquare({1,.8,0},{x + 10, y + 10},6, 10);
-    bottomKey=LongSquare({1,.8,0},{x + 10, y + 23},6, 10);
+    base=LongSquare({1,.8,0, 1.0},{x, y + 5},50, 10);
+    topKey=LongSquare({1,.8,0, 1.0},{x + 10, y + 10},6, 10);
+    bottomKey=LongSquare({1,.8,0, 1.0},{x + 10, y + 23},6, 10);
     addKey();
 }
 

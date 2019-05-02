@@ -22,6 +22,11 @@ const int WIDTH = 800, HEIGHT = 600;
 GLdouble width= WIDTH, height= HEIGHT;
 int wd;
 
+//user score
+int score = 0;
+
+
+
 //play button
 LongSquare gameButton({0,0,0}, {WIDTH/2, HEIGHT/3}, 120, 50);
 Button playGame(gameButton, "Play");
@@ -56,48 +61,48 @@ void init() {
 
     // add squares for background maze to tile vector
     for (int i = 10; i <= 310; i += 40) {
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 90}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 110}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 130}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 90}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 110}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 130}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2 , 1.0}, {i, 90}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {i, 110}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {i, 130}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {i + 20, 90}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {i + 20, 110}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {i + 20, 130}, 20, 20));
     }
 
     for (int i = 150; i <= 430; i += 40) {
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {270, i}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {290, i}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {310, i}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {270, i + 20}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {290, i + 20}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {310, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {270, i}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {290, i}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {310, i}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {270, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {290, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {310, i + 20}, 20, 20));
     }
 
     for (int i = 330; i < 800; i += 40) {
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 410}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 430}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 450}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 410}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 430}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 450}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {i, 410}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {i, 430}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {i, 450}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {i + 20, 410}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {i + 20, 430}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {i + 20, 450}, 20, 20));
     }
 
     for (int i = 190; i <= 390; i += 40) {
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {510, i}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {530, i}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {550, i}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {510, i + 20}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {530, i + 20}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {550, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {510, i}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {530, i}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {550, i}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {510, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {530, i + 20}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {550, i + 20}, 20, 20));
     }
 
     for (int i = 570; i <= 650; i += 40) {
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 190}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i, 210}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i, 230}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 190}, 20, 20));
-        tiles.push_back(LongSquare({0.4, 0.4, 0.4}, {i + 20, 210}, 20, 20));
-        tiles.push_back(LongSquare({0.2, 0.2, 0.2}, {i + 20, 230}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {i, 190}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {i, 210}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {i, 230}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {i + 20, 190}, 20, 20));
+        tiles.push_back(LongSquare({0.4, 0.4, 0.4, 1.0}, {i + 20, 210}, 20, 20));
+        tiles.push_back(LongSquare({0.2, 0.2, 0.2, 1.0}, {i + 20, 230}, 20, 20));
     }
     // end adding squares to tile vector
 
@@ -138,8 +143,15 @@ void display() {
     glLoadIdentity();
     glOrtho(0.0, width, height, 0.0, -1.f, 1.f);
 
+
+
     glClear(GL_COLOR_BUFFER_BIT);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+
+    //transparency
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     //switching screens
     switch(window) {
@@ -212,6 +224,13 @@ void displayGame() {
 }
 void displayResults() {
 
+    string winner = "!";
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glRasterPos2i(WIDTH/2, HEIGHT/2);
+    for (char &letter : winner) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
+
 }
 
 //make the cursor work on the window
@@ -224,6 +243,9 @@ void kbd(unsigned char key, int x, int y){
     if (key == 'h') {
         window = help;
     }
+    if (key == 'r') {
+        window = results;
+    }
     else if (key == 27) {
         glutDestroyWindow(wd);
         exit(0);
@@ -233,7 +255,14 @@ void kbd(unsigned char key, int x, int y){
 }
 
 void timer(int dummy) {
-
+//    if (window ==game) {
+//        if (token1.tokenCollision(0, meghan.getCentY())) {
+//            score +=1;
+//        }
+//    }
+    //ghosty.ghostMove(50,0);
+    glutPostRedisplay();
+    glutTimerFunc(30, timer, dummy);
 }
 
 //mouse clicking on stuff
@@ -277,6 +306,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);          // Initialize GLUT
 
     glutInitDisplayMode(GLUT_RGBA);
+
 
     glutInitWindowSize((int)width, (int)height);
     glutInitWindowPosition(-200,-100); // Position the window's initial top-left corner
