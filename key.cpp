@@ -3,8 +3,8 @@
 //
 
 #include "key.h"
+#include <iostream>
 
-//Variables and vectors
 Circle keyCircle;
 Circle keyOpening;
 LongSquare base;
@@ -12,25 +12,24 @@ LongSquare topKey;
 LongSquare bottomKey;
 vector<Shape*> key;
 
-//Define private methods
-//This method sets up the skeleton for the key 
+
 void Key::createKeySkele(int x, int y) {
-    clearKey();
+    deleteKey();
     keySpace = LongSquare({0.4, 0.4, 0.4}, {x, y}, 60, 30);
     keyCircle.setColor(1,.8,0,1);
     keyCircle.setCenter(x, y - 15);
     keyCircle.setRadius(15);
-    keyOpening.setColor(0,0,0,1);
+    keyOpening.setColor(1,0,1,1);
     keyOpening.setCenter(x, y - 15);
     keyOpening.setRadius(10);
     base=LongSquare({1,.8,0},{x, y + 5},50, 10);
     topKey=LongSquare({1,.8,0},{x + 10, y + 10},6, 10);
     bottomKey=LongSquare({1,.8,0},{x + 10, y + 23},6, 10);
     addKey();
+    hidden = false;
 }
 
 
-//This method adds the parts of the key to the vector
 void Key::addKey() {
     key.push_back(new LongSquare(keySpace));
     key.push_back(new Circle(keyCircle));
@@ -40,28 +39,48 @@ void Key::addKey() {
     key.push_back(new Circle(keyOpening));
 }
 
-// clears key vector
-void Key::clearKey() {
+
+
+void Key::deleteKey() {
     key.clear();
 }
 
 Key::Key() {
-    createKeySkele(500, 315);
+    createKeySkele(670, 180);
 }
 
 Key::Key(int x, int y) {
     createKeySkele(x, y);
 }
 
-// changes location of key based on center (x,y)
-void Key::setLocation(int x, int y) {
-    createKeySkele(x, y);
-}
 
-//This method draws the key
 void Key::drawKey()  {
-    for (Shape* &ky: key){
-        ky->draw();
+    if (!hidden) {
+        for (Shape *&ky: key) {
+            ky->draw();
+        }
     }
 }
 
+LongSquare Key::getKeySpace() {
+    return keySpace;
+}
+
+
+void Key::checkKey(Character &megan) {
+    std::cout<<keySpace.getLeftX()<<std::endl;
+    std::cout<<megan.getCollisonSquare().getRightX()<<std::endl;
+    if ((megan.getCollisonSquare().getRightX()>=keySpace.getLeftX()) &&
+        megan.getCollisonSquare().getBottomY()<=keySpace.getBottomY()){
+            deleteKey();
+            hidden = true;
+        }
+    }
+
+bool Key::isHidden() const {
+    return hidden;
+}
+
+void Key::hide() {
+    hidden = true;
+}
