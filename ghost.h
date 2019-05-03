@@ -6,6 +6,8 @@
 #define FINALPROJECT_CHARTREUSE_GHOST_H
 
 #include "circle.h"
+#include "ghost.h"
+
 #include "longSquare.h"
 #include "shape.h"
 #include <vector>
@@ -30,7 +32,18 @@ private:
     Circle eye2;
     Circle mouth;
     vector<Shape*> ghost;
-    LongSquare collisionSquare;
+    LongSquare collisionSquareGhost;
+
+    int getCenterX() const;
+    int getLeftX() const;
+    int getRightX() const;
+    int getCenterY() const;
+    int getTopY() const;
+    int getBottomY() const;
+    point getCenter() const;
+
+    unsigned int getWidth() const;
+    unsigned int getHeight() const;
 
 
     //Push ghost to the vector in a specific order
@@ -40,6 +53,10 @@ private:
     void drawGhost();
 
 public:
+//    Ghost();
+    unsigned int height;
+    unsigned int width;
+    point center;
 
     //Create ghost skeleton
     void createGhostSkele();
@@ -61,6 +78,7 @@ public:
     //Create a method to move the ghost
     void  ghostMove(double x, double y);
     void track(int x);
+    bool collisionCheck(int left, int right , int bottom, int top);
 
     //Create a method for the color of the ghost to change
     //void ghostColor();

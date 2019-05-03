@@ -3,7 +3,9 @@
 //
 
 #include "ghost.h"
-
+#include <iostream>
+#include <vector>
+#include <iomanip>
 //Variables and vectors
 int x;
 int y;
@@ -20,9 +22,13 @@ LongSquare collisionSquare;
 
 //Define Private methods
 //This creates all the parts for the ghost and puts them in the right order
+//void Ghost::Ghost(){
+//
+//
+//}
 void Ghost::createGhostSkele(){
     head.setCenter(300,300);
-    collisionSquare = LongSquare({0.4, 0.4, 0.4, 0}, {100,100}, 20,30);
+    collisionSquareGhost = LongSquare({0.4, 0.4, 0.4, 0}, {100,100}, 20,30);
     head.setRadius(28);
     leg1=LongSquare({1,1,1,1},{300,320},33, 57);
     halfCircleLeg.setCenter(282,333);
@@ -42,6 +48,7 @@ void Ghost::createGhostSkele(){
     mouth.setRadius(7.5);
 
 }
+
 
 
 //This adds the parts of the ghost to the vector
@@ -83,6 +90,51 @@ void Ghost::ghostMove(double x, double y) {
     eye2.moveCenter(x,y);
     mouth.moveCenter(x,y);
 }
+
+int Ghost::getCenterX() const {
+    return center.x;
+}
+
+int Ghost::getLeftX() const {
+    return center.x - (width / 2);
+}
+
+int Ghost::getRightX() const {
+    return center.x + (width / 2);
+}
+
+int Ghost::getCenterY() const {
+    return center.y;
+}
+
+int Ghost::getTopY() const {
+    return center.y - (height / 2);
+}
+
+int Ghost::getBottomY() const {
+    return center.y + (height / 2);
+}
+
+point Ghost::getCenter() const {
+    return center;
+}
+
+bool Ghost::collisionCheck(int left, int right , int bottom, int top) {
+//    int x = collisionSquare.getLeftX();
+//    int y = collisionSquare.getRightX();
+//    int w = collisionSquare.getBottomY();
+//    int z = collisionSquare.getTopY();
+    bool collide = false;
+    if ((this->collisionSquareGhost.getLeftX() < left) && (left < this->collisionSquareGhost.getRightX()) && (this->collisionSquareGhost.getTopY() < top) && (top < this->collisionSquareGhost.getBottomY())) {
+        collide = true;
+        std::cout<<"You hit the ghost, that's pretty fucking RUDE!"<<std::endl;
+    }
+    if ((this->getLeftX() < right) && (right < this->getRightX()) && (this->getTopY() < bottom) && (bottom < this->getBottomY())) {
+        collide = true;
+    }
+    return collide;
+}
+
 //
 //void Ghost::track(int x) {
 //    while (true) {

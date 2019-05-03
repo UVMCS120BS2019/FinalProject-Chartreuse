@@ -38,6 +38,7 @@ Ghost one;
 Key key1(600, 250);
 Token token1;
 
+
 //make ghost
 Ghost ghosty;
 
@@ -100,6 +101,7 @@ void init() {
     // end adding squares to tile vector
 
     meghan.setBackground(tiles);
+
 }
 
 void initGL() {
@@ -228,6 +230,19 @@ void kbd(unsigned char key, int x, int y){
 }
 
 void timer(int dummy) {
+    cout<<"WE MADE IT HERE 1"<<endl;//GETS HERE SUCCESSFULLY
+    while( window = game){
+       // cout<<"WE MADE IT HERE 2"<<endl;//GETS HERE SUCCESSFULLY
+        if (ghosty.collisionCheck(meghan.collisionSquareGetLeftX(),meghan.collisionSquareGetRightX(), meghan.collisionSquareGetbottomY(),meghan.collsionSquareGetTopY())== true){
+
+            cout<<"You hit the ghost!!!"<<endl;
+        }
+
+
+    };
+
+
+
 
 }
 

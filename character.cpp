@@ -51,6 +51,34 @@ void Character::move(double x, double y) {
     tail.moveCenter(x,y);
     collisionSquare.move(x,y);
 }
+int Character::collisionSquareGetRightX(){
+    cSquareRightX = collisionSquare.getRightX();
+//    cSquareLeftX = collisionSquare.getLeftX();
+//    cSquareRightY = collisionSquare.getRightY();
+//    cSquareLeftY = collisionSquare.getLeftY();
+//    cSqaureTopX = collisionSquare.getTopX();
+//    cSquareBottomX = collisionSquare.getBottomX();
+    return cSquareRightX;
+
+}
+int Character::collisionSquareGetLeftX(){
+    cSquareLeftX = collisionSquare.getLeftX();
+    return cSquareLeftX;
+}
+
+int Character::collsionSquareGetTopY(){
+    cSquareTopY = collisionSquare.getTopY();
+    return cSquareTopY;
+}
+int Character::collisionSquareGetbottomY(){
+    cSquareBottomY = collisionSquare.getBottomY();
+    return cSquareTopY;
+}
+//int Character::collisionSquareGetbottomY{
+//        cSquareBottomY = collisionSquare.getBottomY();
+//        return cSquareBottomY;
+//
+//};
 
 //void Character::resetPosition() {
 //    torso.move(30,100);
