@@ -10,6 +10,7 @@ Circle keyOpening;
 LongSquare base;
 LongSquare topKey;
 LongSquare bottomKey;
+bool hidden;
 vector<Shape*> key;
 
 
@@ -67,11 +68,11 @@ LongSquare Key::getKeySpace() {
 }
 
 
-void Key::checkKey(Character &megan) {
+void Key::checkKey(Character &meghan) {
     std::cout<<keySpace.getLeftX()<<std::endl;
-    std::cout<<megan.getCollisonSquare().getRightX()<<std::endl;
-    if ((megan.getCollisonSquare().getRightX()>=keySpace.getLeftX()) &&
-        megan.getCollisonSquare().getBottomY()<=keySpace.getBottomY()){
+    std::cout<<meghan.getCollisionSquare().getRightX()<<std::endl;
+    if ((meghan.getCollisionSquare().getRightX()>=keySpace.getLeftX()) &&
+        meghan.getCollisionSquare().getBottomY()<=keySpace.getBottomY()){
             deleteKey();
             hidden = true;
         }

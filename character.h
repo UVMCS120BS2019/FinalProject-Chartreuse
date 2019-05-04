@@ -44,8 +44,7 @@ public:
 
 
     //getters and setters
-    int getBottomY();
-    int getCentY();
+    LongSquare getCollisionSquare();
 
 
 };

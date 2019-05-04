@@ -35,7 +35,7 @@ Button returnToMenu(returnButton, " <- Back to menu");
 //make a character
 Character meghan;
 Ghost one;
-Key key1(600, 250);
+Key key1(650, 210);
 Token token1;
 
 //make ghost
@@ -126,7 +126,7 @@ void kbdS(int key, int x, int y) {
             meghan.testBounds();
             break;
     }
-
+    key1.checkKey(meghan);
     glutPostRedisplay();
 }
 
@@ -199,7 +199,6 @@ void displayGame() {
 
 
     one.completedGhost(one);
-    key1.setLocation(650, 210);
     key1.drawKey();
     token1.setLocation(200,200);
     token1.drawToken();
