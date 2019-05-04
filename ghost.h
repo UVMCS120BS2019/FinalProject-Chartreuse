@@ -39,24 +39,20 @@ private:
     //Construct the Ghost
     void drawGhost();
 
+
 public:
 
+    //Constructors
+    Ghost();
+    Ghost(int x, int y);
+
     //Create ghost skeleton
-    void createGhostSkele();
+    void createGhostSkele(int x, int y);
 
 
     //place the complete ghost together;
     void completedGhost(Ghost ghoul);
 
-    //STILL THINKING ABOUT
-    //Getters
-    //Get the location of the ghost
-    //int getLocation(int x, int y);
-
-
-    //Setters
-    //Set the location of the ghost
-    //int setLocation(int x, int y);
 
     //Create a method to move the ghost
     void  ghostMove(double x, double y);

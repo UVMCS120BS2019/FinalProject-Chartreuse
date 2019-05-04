@@ -20,25 +20,25 @@ LongSquare collisionSquare;
 
 //Define Private methods
 //This creates all the parts for the ghost and puts them in the right order
-void Ghost::createGhostSkele(){
-    head.setCenter(300,300);
-    collisionSquare = LongSquare({0.4, 0.4, 0.4, 0}, {100,100}, 20,30);
-    head.setRadius(28);
-    leg1=LongSquare({1,1,1,1},{300,320},33, 57);
-    halfCircleLeg.setCenter(282,333);
+void Ghost::createGhostSkele(int x, int y){
+    head.setCenter(x-12 ,y);
+    collisionSquare = LongSquare({0.4, 0.4, 0.4, 0}, {x,y}, 20,30);
+    head.setRadius(24);
+    leg1=LongSquare({1,1,1,1},{x - 12 , y + 12 }, 40, 48);
+    halfCircleLeg.setCenter(x - 26 ,y+28);
     halfCircleLeg.setRadius(10);
-    halfCircleLeg2.setCenter(301,334);
+    halfCircleLeg2.setCenter(x-10,y+29);
     halfCircleLeg2.setRadius(10);
-    halfCircleLeg3.setCenter(318,333);
+    halfCircleLeg3.setCenter(x+2,y+28);
     halfCircleLeg3.setRadius(10);
     eye1.setColor(0,0,0,1);
-    eye1.setCenter(285,300);
+    eye1.setCenter(x - 20 ,y );
     eye1.setRadius(8.5);
     eye2.setColor(0,0,0,1);
-    eye2.setCenter(315,300);
+    eye2.setCenter(x  , y );
     eye2.setRadius(8.5);
     mouth.setColor(0,0,0,1);
-    mouth.setCenter(300,320);
+    mouth.setCenter(x - 10 , y + 15 );
     mouth.setRadius(7.5);
 
 }
@@ -57,6 +57,15 @@ void Ghost::addGhost(){
 
 }
 
+Ghost::Ghost() {
+    createGhostSkele(100,100);
+}
+
+Ghost::Ghost(int x, int y) {
+    createGhostSkele(x, y);
+}
+
+
 //This call the draw function for each part of the ghost
 void Ghost::drawGhost(){
     for (Shape* &ghoul:ghost){
@@ -68,7 +77,7 @@ void Ghost::drawGhost(){
 //Define Public methods
 //This calls all the private and public methods and assembles the ghost
 void Ghost::completedGhost(Ghost ghoul){
-    ghoul.createGhostSkele();
+    ghoul.createGhostSkele(100,100);
     ghoul.addGhost();
     ghoul.drawGhost();
 }
