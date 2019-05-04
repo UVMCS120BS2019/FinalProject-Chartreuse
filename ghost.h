@@ -33,13 +33,6 @@ private:
     LongSquare collisionSquare;
 
 
-    //Push ghost to the vector in a specific order
-    void addGhost();
-
-    //Construct the Ghost
-    void drawGhost();
-
-
 public:
 
     //Constructors
@@ -49,9 +42,15 @@ public:
     //Create ghost skeleton
     void createGhostSkele(int x, int y);
 
+    //Push ghost to the vector in a specific order
+    void addGhost();
+
+    //Construct the Ghost
+    void drawGhost();
 
     //place the complete ghost together;
-    void completedGhost(Ghost ghoul);
+    //
+    //void completedGhost(Ghost ghoul);
 
 
     //Create a method to move the ghost

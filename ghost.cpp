@@ -18,11 +18,12 @@ Circle mouth;
 vector<Shape*> ghost;
 LongSquare collisionSquare;
 
+
 //Define Private methods
 //This creates all the parts for the ghost and puts them in the right order
 void Ghost::createGhostSkele(int x, int y){
     head.setCenter(x-12 ,y);
-    collisionSquare = LongSquare({0.4, 0.4, 0.4, 0}, {x,y}, 20,30);
+    collisionSquare = LongSquare({0.4, 0.4, 0.4, 0}, {x,y}, 45,50);
     head.setRadius(24);
     leg1=LongSquare({1,1,1,1},{x - 12 , y + 12 }, 40, 48);
     halfCircleLeg.setCenter(x - 26 ,y+28);
@@ -76,11 +77,11 @@ void Ghost::drawGhost(){
 
 //Define Public methods
 //This calls all the private and public methods and assembles the ghost
-void Ghost::completedGhost(Ghost ghoul){
-    ghoul.createGhostSkele(100,100);
-    ghoul.addGhost();
-    ghoul.drawGhost();
-}
+//void Ghost::completedGhost(Ghost ghoul){
+//    ghoul.createGhostSkele(100,100);
+//    ghoul.addGhost();
+//    ghoul.drawGhost();
+//}
 
 void Ghost::ghostMove(double x, double y) {
     head.moveCenter(x,y);

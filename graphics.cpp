@@ -40,12 +40,12 @@ Button backToMenuButton(backToMenuBox, "Back to Menu");
 
 //make a character
 Character meghan;
-Ghost one;
+Ghost one (300, 423);
 Key key1(650, 210);
 Token token1;
 
 //make ghost
-Ghost ghosty;
+//Ghost ghosty;
 
 // bool for if game won
 bool gameWon = false;
@@ -204,10 +204,10 @@ void displayGame() {
     }
 
     meghan.draw();
-    ghosty.completedGhost(ghosty);
 
+    one.addGhost();
+    one.drawGhost();
 
-    one.completedGhost(one);
     key1.drawKey();
     token1.setLocation(200,200);
     token1.drawToken();
