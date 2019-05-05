@@ -36,17 +36,26 @@ Button helpGame(helpButton, "Get Help");
 //return to menu button
 LongSquare returnButton({0,0,0}, {WIDTH/5, HEIGHT/5}, 120, 50);
 Button returnToMenu(returnButton, " <- Back to menu");
+// play again button
+LongSquare playAgainBox({0,0,0}, {WIDTH/2, HEIGHT/2}, 120, 50);
+Button playAgainButton(playAgainBox, "Play Again");
+// play again button
+LongSquare backToMenuBox({0,0,0}, {WIDTH/2, HEIGHT/2 + 70}, 120, 50);
+Button backToMenuButton(backToMenuBox, "Back to Menu");
 
 //make a character
 Character meghan;
-Ghost one;
-Key key1(600, 250);
+Ghost one (300, 423);
+Key key1(650, 210);
 Token token1;
 Token token2;
 Token token3;
 
 //make ghost
-Ghost ghosty;
+//Ghost ghosty;
+
+// bool for if game won
+bool gameWon = false;
 
 // Enum for the different screen
 enum Screen {start, help, game, results};
@@ -139,7 +148,7 @@ void kbdS(int key, int x, int y) {
         token1.seeThru();
         cout << score;
     }
-
+    key1.checkKey(meghan);
     glutPostRedisplay();
 }
 
@@ -177,7 +186,6 @@ void display() {
 void displayStart() {
     playGame.draw();
     helpGame.draw();
-
 }
 void displayHelp(){
     string helpMsg1 = "Having trouble?";
@@ -215,10 +223,10 @@ void displayGame() {
     }
 
     meghan.draw();
-    ghosty.completedGhost(ghosty);
 
-    one.completedGhost(one);
-    key1.setLocation(650, 210);
+    one.addGhost();
+    one.drawGhost();
+
     key1.drawKey();
     //token1.setLocation(600,430);
     token1.setLocation(100,100);
@@ -230,14 +238,25 @@ void displayGame() {
 
 }
 void displayResults() {
-
-    string winner = "!";
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glRasterPos2i(WIDTH/2, HEIGHT/2);
-    for (char &letter : winner) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    string resultsMessage;
+    if (gameWon == false) {
+        resultsMessage = "You Died";
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 100);
+        for (char &letter : resultsMessage) {
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+        }
+    } else {
+        resultsMessage = "You Won !";
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 100);
+        for (char &letter : resultsMessage) {
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+        }
     }
 
+    playAgainButton.draw();
+    backToMenuButton.draw();
 }
 
 //make the cursor work on the window
@@ -249,9 +268,6 @@ void cursor(int x, int y) {
 void kbd(unsigned char key, int x, int y){
     if (key == 'h') {
         window = help;
-    }
-    if (key == 'r') {
-        window = results;
     }
     else if (key == 27) {
         glutDestroyWindow(wd);
@@ -288,6 +304,7 @@ void mouse(int button, int state, int x, int y) {
             }
         }
     }
+
     if (window == help) {
         if (returnToMenu.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
             window = start;
@@ -299,6 +316,31 @@ void mouse(int button, int state, int x, int y) {
         }
     }
 
+    if (window == results) {
+        if (playAgainButton.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
+            window = game;
+            gameWon = false;
+            meghan.resetPosition();
+            if (playAgainButton.isOverlapping(x,y)) {
+                if(button == GLUT_LEFT_BUTTON) {
+                    window = game;
+                    gameWon = false;
+                    meghan.resetPosition();
+                }
+            }
+        } else if (backToMenuButton.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
+            window = start;
+            gameWon = false;
+            meghan.resetPosition();
+            if (backToMenuButton.isOverlapping(x,y)) {
+                if(button == GLUT_LEFT_BUTTON) {
+                    window = start;
+                    gameWon = false;
+                    meghan.resetPosition();
+                }
+            }
+        }
+    }
 }
 
 
@@ -306,7 +348,7 @@ int main(int argc, char** argv) {
 
     init();
 
-    glutInit(&argc, argv);// Initialize GLUT
+    glutInit(&argc, argv);          // Initialize GLUT
 
     glutInitDisplayMode(GLUT_RGBA);
 

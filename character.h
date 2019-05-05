@@ -47,6 +47,8 @@ public:
     int getBack();
     int getFront();
 
+    LongSquare getCollisionSquare();
+
 
 };
 
