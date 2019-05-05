@@ -7,6 +7,7 @@
 
 #include "circle.h"
 #include "longSquare.h"
+#include "character.h"
 #include "shape.h"
 #include <vector>
 using std::vector;
@@ -31,7 +32,7 @@ private:
     void addKey();
 
     // clears everything in key vector
-    void clearKey();
+    void deleteKey();
 
 public:
 
@@ -42,16 +43,15 @@ public:
     // draw key
     void drawKey();
 
+    void checkKey(Character &meghan);
 
-    //STILL THINKING ABOUT
-    //Getters
-    //Get the location of the key
-    //int getLocation(int x, int y);
+    bool isHidden()const;
+
+    void hide();
+
+    LongSquare getKeySpace();
 
 
-    //Setters
-    //Set the location of the key
-    void setLocation(int x, int y);
 
     //Create a method to move the key
     //void  keyMove();

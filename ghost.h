@@ -33,34 +33,29 @@ private:
     LongSquare collisionSquare;
 
 
+public:
+
+    //Constructors
+    Ghost();
+    Ghost(int x, int y);
+
+    //Create ghost skeleton
+    void createGhostSkele(int x, int y);
+
     //Push ghost to the vector in a specific order
     void addGhost();
 
     //Construct the Ghost
     void drawGhost();
 
-public:
-
-    //Create ghost skeleton
-    void createGhostSkele();
-
-
     //place the complete ghost together;
-    void completedGhost(Ghost ghoul);
+    //
+    //void completedGhost(Ghost ghoul);
 
-    //STILL THINKING ABOUT
-    //Getters
-    //Get the location of the ghost
-    //int getLocation(int x, int y);
-
-
-    //Setters
-    //Set the location of the ghost
-    //int setLocation(int x, int y);
 
     //Create a method to move the ghost
     void  ghostMove(double x, double y);
-    void track(int x);
+    void track(point start, point end);
 
     //Create a method for the color of the ghost to change
     //void ghostColor();
