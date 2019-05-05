@@ -280,7 +280,7 @@ void displayResults() {
         }
         string displayScore = to_string(score);
         glColor3f(1.0f, 1.0f, 1.0f);
-        glRasterPos2i(WIDTH/2 + 60, HEIGHT/2 - 150);
+        glRasterPos2i(WIDTH/2 + 70, HEIGHT/2 - 150);
         for (char &letter : displayScore) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
         }
