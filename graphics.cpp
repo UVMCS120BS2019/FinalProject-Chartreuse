@@ -47,9 +47,10 @@ Button backToMenuButton(backToMenuBox, "Back to Menu");
 Character meghan;
 Ghost one (300, 423);
 Key key1(650, 210);
-Token token1;
-Token token2;
-Token token3;
+//Token token1(100,100);
+Token token1(600, 430);
+Token token2(660, 430);
+Token token3(720, 430);
 
 //make ghost
 //Ghost ghosty;
@@ -143,12 +144,33 @@ void kbdS(int key, int x, int y) {
             break;
     }
 
-    if (!token1.isHidden() && token1.tokenCollision(meghan.getFront())) {
-        score +=1;
-        token1.seeThru();
-        cout << score;
+    if(token1.tokenCollision(meghan)) {
+
+        if(!token1.isHidden()) {
+            score += 1;
+        }
+        token1.hide();
     }
+    if(token2.tokenCollision(meghan)) {
+        if(!token2.isHidden()) {
+            score += 1;
+        }
+        token2.hide();
+    }
+    if(token3.tokenCollision(meghan)) {
+        if(!token3.isHidden()) {
+            score += 1;
+        }
+        token3.hide();
+    }
+
+
     key1.checkKey(meghan);
+    if(key1.isHidden()) {
+        gameWon = true;
+        window=results;
+    }
+
     glutPostRedisplay();
 }
 
@@ -212,12 +234,7 @@ void displayHelp(){
 }
 
 void displayGame() {
-    /* string game1 = "You found the game screen!";
-    glColor3f(1.0f, 1.0f, 1.0f);
-    glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 110 );
-    for (char &letter : game1) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
-    } */
+
     for (LongSquare i : tiles) {
         i.draw();
     }
@@ -228,13 +245,15 @@ void displayGame() {
     one.drawGhost();
 
     key1.drawKey();
-    //token1.setLocation(600,430);
-    token1.setLocation(100,100);
+
     token1.drawToken();
-    token2.setLocation(660,430);
     token2.drawToken();
-    token3.setLocation(720,430);
     token3.drawToken();
+
+    glRasterPos2i(700,520);
+    for (char &letter : "Coins: "+ to_string(score).substr(0,to_string(score).find('.')+2)){
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, letter);
+    }
 
 }
 void displayResults() {
@@ -251,6 +270,18 @@ void displayResults() {
         glColor3f(1.0f, 1.0f, 1.0f);
         glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 100);
         for (char &letter : resultsMessage) {
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+        }
+        string resultsMessage2 = "Coins collected: ";
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glRasterPos2i(WIDTH/2 - 65, HEIGHT/2 - 150);
+        for (char &letter : resultsMessage2) {
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+        }
+        string displayScore = to_string(score);
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glRasterPos2i(WIDTH/2 + 60, HEIGHT/2 - 150);
+        for (char &letter : displayScore) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
         }
     }

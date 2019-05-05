@@ -69,13 +69,13 @@ LongSquare Key::getKeySpace() {
 
 
 void Key::checkKey(Character &meghan) {
-    std::cout<<meghan.getCollisionSquare().getRightX()<<std::endl;
+    //std::cout<<meghan.getCollisionSquare().getRightX()<<std::endl;
     if ((meghan.getCollisionSquare().getRightX()>=keySpace.getLeftX()) &&
         meghan.getCollisionSquare().getBottomY()<=keySpace.getBottomY()){
             deleteKey();
             hidden = true;
         }
-    }
+}
 
 bool Key::isHidden() const {
     return hidden;

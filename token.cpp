@@ -6,8 +6,13 @@
 
 
 //Define private methods
-//This method sets up the skeleton for the token 
+//This method sets up the skeleton for the token
+Token::Token(int x, int y) {
+    createTokenSkele(x, y);
+}
+
 void Token::createTokenSkele(int x, int y)  {
+    deleteToken();
     tokenCircle.setCenter(x,y);
     tokenCircle.setRadius(15);
     tokenCircle.setColor(1,.6,0,1);
@@ -19,9 +24,9 @@ void Token::createTokenSkele(int x, int y)  {
     collisionCheck.setWidth(15);
     collisionCheck.setColor(0,0,0,0);
 
-    token.emplace_back(&collisionCheck);
-    token.emplace_back(&tokenCircle);
-    token.emplace_back(&tokenLayer);
+    token.push_back(new LongSquare(collisionCheck));
+    token.push_back(new Circle(tokenCircle));
+    token.push_back(new Circle(tokenLayer));
 
     hidden = false;
 }
@@ -30,9 +35,15 @@ void Token::createTokenSkele(int x, int y)  {
 
 //This method draws the token
 void Token::drawToken()  {
-    for (Shape *tk: token){
-        tk->draw();
+    if (!hidden) {
+        for (Shape *tk: token) {
+            tk->draw();
+        }
     }
+}
+
+void Token::deleteToken() {
+    token.clear();
 }
 
 
@@ -40,25 +51,26 @@ void Token::setLocation(int x, int y) {
     createTokenSkele(x,y);
 }
 
-bool Token::tokenCollision(int x) {
+bool Token::tokenCollision(Character &doggo) {
 
-    if(x < collisionCheck.getRightX() && x > collisionCheck.getLeftX()) {
+    if(doggo.getCollisionSquare().getRightX() >= collisionCheck.getLeftX() &&
+    doggo.getCollisionSquare().getLeftX() <= collisionCheck.getRightX() &&
+    doggo.getCollisionSquare().getTopY() >= collisionCheck.getTopY()) {
+        deleteToken();
         return true;
     }
-    return false;
+    else
+        return false;
+}
+
+LongSquare Token::getCollisionCheck() {
+    return collisionCheck;
 }
 
 bool Token::isHidden() const {
-    for (Shape *tk: token){
-        tk->setColor(0,0,0,0);
-        //tk->draw();
-    }
     return hidden;
 }
-
-
-void Token::seeThru() {
-
+void Token::hide() {
     hidden = true;
 }
 

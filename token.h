@@ -9,6 +9,7 @@
 #include "circle.h"
 #include "longSquare.h"
 #include "shape.h"
+#include "character.h"
 #include <vector>
 using std::vector;
 
@@ -33,6 +34,8 @@ private:
 
 public:
     //Construct token
+    Token(int x, int y);
+
     void drawToken();
 
     //Place the completed token together
@@ -44,16 +47,19 @@ public:
     //int getLocation(int x, int y);
 
     //is there a collision with the character?
-    bool tokenCollision(int x);
+    bool tokenCollision(Character &doggo);
+
+    void addToken();
+    void deleteToken();
 
     //Setters
     //Set the location of the token
     void setLocation(int x, int y);
 
-    //Create a method for the color of the token to change
-    void seeThru();
+    LongSquare getCollisionCheck();
 
     bool isHidden() const;
+    void hide();
 
     ~Token();
 
