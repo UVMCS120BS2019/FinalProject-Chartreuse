@@ -230,16 +230,7 @@ void kbd(unsigned char key, int x, int y){
 }
 
 void timer(int dummy) {
-    cout<<"WE MADE IT HERE 1"<<endl;//GETS HERE SUCCESSFULLY
-    while( window = game){
-       // cout<<"WE MADE IT HERE 2"<<endl;//GETS HERE SUCCESSFULLY
-        if (ghosty.collisionCheck(meghan.collisionSquareGetLeftX(),meghan.collisionSquareGetRightX(), meghan.collisionSquareGetbottomY(),meghan.collsionSquareGetTopY())== true){
 
-            cout<<"You hit the ghost!!!"<<endl;
-        }
-
-
-    };
 
 
 
@@ -276,6 +267,10 @@ void mouse(int button, int state, int x, int y) {
             }
         }
     }
+    ghosty.collisionCheck(meghan.collisionSquareGetLeftX(),meghan.collisionSquareGetRightX(), meghan.collisionSquareGetbottomY(),meghan.collsionSquareGetTopY());
+
+
+
 
 }
 

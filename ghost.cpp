@@ -124,14 +124,16 @@ bool Ghost::collisionCheck(int left, int right , int bottom, int top) {
 //    int y = collisionSquare.getRightX();
 //    int w = collisionSquare.getBottomY();
 //    int z = collisionSquare.getTopY();
+    std::cout<<"Ghost coords: left: "<<collisionSquareGhost.getLeftX()<<" right: "<<collisionSquareGhost.getRightX()<<" bottom: "<< this->collisionSquareGhost.getBottomY()<<" top:"<< this->collisionSquareGhost.getBottomY() <<std::endl<<std::endl;
+    std::cout<<"Dog coords: left:"<<left <<" right: "<<right<<" top: "<<this->collisionSquareGhost.getTopY()<<" bottom: " <<bottom<<std::endl<<std::endl;
     bool collide = false;
-    if ((this->collisionSquareGhost.getLeftX() < left) && (left < this->collisionSquareGhost.getRightX()) && (this->collisionSquareGhost.getTopY() < top) && (top < this->collisionSquareGhost.getBottomY())) {
+    if ( ((this->collisionSquareGhost.getLeftX() <= left) && (left <= this->collisionSquareGhost.getRightX())) || ((this->collisionSquareGhost.getTopY() <= top) && (top < this->collisionSquareGhost.getBottomY())) ) {
         collide = true;
         std::cout<<"You hit the ghost, that's pretty fucking RUDE!"<<std::endl;
     }
-    if ((this->getLeftX() < right) && (right < this->getRightX()) && (this->getTopY() < bottom) && (bottom < this->getBottomY())) {
-        collide = true;
-    }
+//    if ((this->getTopY() < top) && (top < this->getTopY()) || (this->getBottomY() < bottom) && (bottom < this->getBottomY())) {
+//        collide = true;
+//    }
     return collide;
 }
 
