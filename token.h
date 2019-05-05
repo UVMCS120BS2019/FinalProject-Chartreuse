@@ -21,6 +21,7 @@ private:
     Circle tokenCircle;
     Circle tokenLayer;
     vector<Shape*> token;
+    bool hidden;
 
 
     //Create the token skeleton
@@ -43,7 +44,7 @@ public:
     //int getLocation(int x, int y);
 
     //is there a collision with the character?
-    bool tokenCollision(int x, int y);
+    bool tokenCollision(int x);
 
     //Setters
     //Set the location of the token
@@ -52,7 +53,7 @@ public:
     //Create a method for the color of the token to change
     void seeThru();
 
-
+    bool isHidden() const;
 
     ~Token();
 

@@ -22,6 +22,8 @@ void Token::createTokenSkele(int x, int y)  {
     token.emplace_back(&collisionCheck);
     token.emplace_back(&tokenCircle);
     token.emplace_back(&tokenLayer);
+
+    hidden = false;
 }
 
 
@@ -38,21 +40,26 @@ void Token::setLocation(int x, int y) {
     createTokenSkele(x,y);
 }
 
-bool Token::tokenCollision(int x, int y) {
+bool Token::tokenCollision(int x) {
 
-    if(x < collisionCheck.getRightX() && x < collisionCheck.getLeftX()) {
-        if(y < collisionCheck.getBottomY() && y> collisionCheck.getTopY()) {
-            return true;
-        }
+    if(x < collisionCheck.getRightX() && x > collisionCheck.getLeftX()) {
+        return true;
     }
     return false;
 }
 
+bool Token::isHidden() const {
+    for (Shape *tk: token){
+        tk->setColor(0,0,0,0);
+        //tk->draw();
+    }
+    return hidden;
+}
+
 
 void Token::seeThru() {
-    tokenCircle.setColor(0,0,0,0);
-    tokenLayer.setColor(0,0,0,0);
 
+    hidden = true;
 }
 
 Token::~Token() {
