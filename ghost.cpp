@@ -3,15 +3,30 @@
 //
 
 #include "ghost.h"
+#include <iostream>
+
 
 //Variables and vectors
 int x;
 int y;
+Circle head;
+LongSquare leg1;
+Circle halfCircleLeg;
+Circle halfCircleLeg2;
+Circle halfCircleLeg3;
+Circle eye1;
+Circle eye2;
+Circle mouth;
+vector<Shape*> ghost;
+LongSquare collisionSquare;
+
+int i = 0;
 
 
 //Define Private methods
 //This creates all the parts for the ghost and puts them in the right order
 void Ghost::createGhostSkele(int x, int y){
+    deleteGhost();
     head.setCenter(x-12 ,y);
     collisionSquare = LongSquare({0.4, 0.4, 0.4, 0}, {x,y}, 45,50);
     head.setRadius(24);
@@ -31,7 +46,7 @@ void Ghost::createGhostSkele(int x, int y){
     mouth.setColor(0,0,0,1);
     mouth.setCenter(x - 10 , y + 15 );
     mouth.setRadius(7.5);
-
+    addGhost();
 }
 
 
@@ -46,6 +61,10 @@ void Ghost::addGhost(){
     ghost.push_back(new Circle (eye2));
     ghost.push_back(new Circle (mouth));
 
+}
+
+void Ghost::deleteGhost() {
+    ghost.clear();
 }
 
 Ghost::Ghost() {
@@ -64,6 +83,10 @@ void Ghost::drawGhost(){
     }
 }
 
+point Ghost::getCollisionSquareCenter() {
+    return collisionSquare.getCenter();
+}
+
 
 //Define Public methods
 //This calls all the private and public methods and assembles the ghost
@@ -74,18 +97,33 @@ void Ghost::drawGhost(){
 //}
 
 void Ghost::ghostMove(double x, double y) {
-    for(Shape* &ghoul:ghost) {
-        ghoul->moveCenter(x,y);
-    }
-//    head.moveCenter(x,y);
-//    leg1.moveCenter(x,y);
-//    halfCircleLeg.moveCenter(x,y);
-//    halfCircleLeg2.moveCenter(x,y);
-//    halfCircleLeg3.moveCenter(x,y);
-//    eye1.moveCenter(x,y);
-//    eye2.moveCenter(x,y);
-//    mouth.moveCenter(x,y);
+    collisionSquare.move(x, y);
+    collisionSquare.moveCenter(x, y);
+    head.moveCenter(x,y);
+    leg1.move(x,y);
+    halfCircleLeg.moveCenter(x,y);
+    halfCircleLeg2.moveCenter(x,y);
+    halfCircleLeg3.moveCenter(x,y);
+    eye1.moveCenter(x,y);
+    eye2.moveCenter(x,y);
+    mouth.moveCenter(x,y);
 }
 
-void Ghost::track(point start, point end) {
+void Ghost::track(int deltaX) {
+    deleteGhost();
+    if (i < deltaX) {
+        ghostMove(5, 0);
+        std::cout << collisionSquare.getCenter().x << std::endl;
+        std::this_thread::sleep_for(std::chrono::nanoseconds(250000000));
+    } else if (i >= deltaX) {
+        ghostMove(-5, 0);
+        std::cout << collisionSquare.getCenter().x << std::endl;
+        std::this_thread::sleep_for(std::chrono::nanoseconds(250000000));
+    }
+    std::cout << i << std::endl;
+    i += 5;
+    if (i == (2 * deltaX)) {
+        i = 0;
+    }
+
 }
