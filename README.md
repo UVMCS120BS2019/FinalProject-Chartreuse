@@ -15,7 +15,7 @@ but that's irrelevant. She enjoys long walks on the beach and calling her mother
 not a long time. Sagittarius. Loyal af... if you can't throw a ball swipe left.
 
 ## How To Play
-Use your arrow keys to move Meghan the dog through the maze. If Meghan touches the ghost she dies so, like, try not to. :(
+Use your arrow keys to move Meghan the dog through the maze. If Meghan gets eaten by the ghost she dies so, like, try not to. :(
 Collecting the tokens gives the user a score, and Meghan needs to make her way to the key to escape. If you collect all 
 the tokens, Meghan gets a biscuit.
 
