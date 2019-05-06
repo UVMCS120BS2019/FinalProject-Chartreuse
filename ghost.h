@@ -6,6 +6,7 @@
 #define FINALPROJECT_CHARTREUSE_GHOST_H
 
 #include "circle.h"
+#include "character.h"
 #include "longSquare.h"
 #include "shape.h"
 #include <vector>
@@ -22,6 +23,7 @@ private:
     //Variables and vectors
     int x;
     int y;
+    bool hit;
     Circle head;
     LongSquare leg1;
     Circle halfCircleLeg;
@@ -45,12 +47,13 @@ public:
 
     //Push ghost to the vector in a specific order
     void addGhost();
-
+    bool setHit(bool hit);
     //clear ghost shape vector
     void deleteGhost();
 
     //Construct the Ghost
     void drawGhost();
+    bool checkGhost(Character &meghan);
 
     // get collision square center
     point getCollisionSquareCenter();

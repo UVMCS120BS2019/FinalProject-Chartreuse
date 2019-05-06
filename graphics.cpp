@@ -147,6 +147,11 @@ void kbdS(int key, int x, int y) {
             break;
     }
     //collide with tokens then hide them
+    if(ghosty.checkGhost(meghan)== true){
+        meghan.resetPosition();
+        window = results;
+        ghosty.setHit(false);
+    }
     if(token1.tokenCollision(meghan)) {
 
         if(!token1.isHidden()) {
@@ -291,6 +296,7 @@ void displayGame() {
 void displayResults() {
     string resultsMessage;
     if (gameWon == false) {
+//        ghosty.setHit(false);
         resultsMessage = "You Died";
         glColor3f(1.0f, 1.0f, 1.0f);
         glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 100);
