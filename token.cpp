@@ -55,7 +55,7 @@ bool Token::tokenCollision(Character &doggo) {
 
     if(doggo.getCollisionSquare().getRightX() >= collisionCheck.getLeftX() &&
     doggo.getCollisionSquare().getLeftX() <= collisionCheck.getRightX() &&
-    doggo.getCollisionSquare().getTopY() >= collisionCheck.getTopY()) {
+    doggo.getCollisionSquare().getTopY()+50 >= collisionCheck.getTopY()) {
         deleteToken();
         return true;
     }
@@ -73,6 +73,7 @@ bool Token::isHidden() const {
 void Token::hide() {
     hidden = true;
 }
+
 
 Token::~Token() {
 
