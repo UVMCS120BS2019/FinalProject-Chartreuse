@@ -9,6 +9,7 @@
 //Variables and vectors
 int x;
 int y;
+bool hit;
 Circle head;
 LongSquare leg1;
 Circle halfCircleLeg;
@@ -17,7 +18,6 @@ Circle halfCircleLeg3;
 Circle eye1;
 Circle eye2;
 Circle mouth;
-bool hit;
 vector<Shape*> ghost;
 LongSquare collisionSquare;
 
@@ -87,8 +87,10 @@ void Ghost::drawGhost(){
 point Ghost::getCollisionSquareCenter() {
     return collisionSquare.getCenter();
 }
-
-
+bool Ghost::setHit(bool hit){
+    this->hit = hit;
+    return hit;
+}
 bool Ghost::checkGhost(Character &meghan) {
     std::cout << meghan.getCollisionSquare().getBottomY() << std::endl;
     std::cout << collisionSquare.getTopY() << std::endl;
@@ -120,11 +122,14 @@ bool Ghost::checkGhost(Character &meghan) {
         ((this->collisionSquare.getTopY() <= meghan.getCollisionSquare().getTopY()) &&
          (meghan.getCollisionSquare().getTopY() < this->collisionSquare.getBottomY()))) {
         hit = true;
+
         std::cout << "You hit the ghost, that's pretty fucking RUDE!" << std::endl;
     }
+   // else if()
 
-    return hit;
+        return hit;
 }
+
 
 
 
@@ -140,6 +145,8 @@ void Ghost::ghostMove(double x, double y) {
     eye2.moveCenter(x,y);
     mouth.moveCenter(x,y);
 }
+
+
 
 void Ghost::track(int deltaX) {
     deleteGhost();

@@ -128,23 +128,35 @@ void initGL() {
 void kbdS(int key, int x, int y) {
     switch(key) {
         case GLUT_KEY_DOWN:
-            meghan.move(0, 5);
+            meghan.move(0, 6);
             meghan.testBounds();
             break;
         case GLUT_KEY_LEFT:
-            meghan.move(-5, 0);
+            meghan.move(-6, 0);
             meghan.testBounds();
             break;
         case GLUT_KEY_RIGHT:
-            meghan.move(5, 0);
+            meghan.move(6, 0);
             meghan.testBounds();
             break;
         case GLUT_KEY_UP:
-            meghan.move(0, -5);
+            meghan.move(0, -6);
             meghan.testBounds();
             break;
     }
     //collide with tokens then hide them
+    if(ghosty.checkGhost(meghan)== true){
+        meghan.resetPosition();
+        window = results;
+        ghosty.setHit(false);
+        //resest the game screen
+        token1.createTokenSkele(600, 430);
+        token2.createTokenSkele(660, 430);
+        token3.createTokenSkele(720, 430);
+
+        key1.createKeySkele(650, 210);
+        key1.unhide();
+    }
     if(token1.tokenCollision(meghan)) {
 
         if(!token1.isHidden()) {
@@ -185,12 +197,15 @@ void kbdS(int key, int x, int y) {
     }
 
 
+
     if(ghosty.checkGhost(meghan)== true){
         window = results;
     }
 
-    glutPostRedisplay();
 
+    cout<<endl;
+
+    glutPostRedisplay();
 
 
 }
@@ -296,6 +311,7 @@ void displayGame() {
 void displayResults() {
     string resultsMessage;
     if (gameWon == false) {
+//        ghosty.setHit(false);
         resultsMessage = "You Died";
         glColor3f(1.0f, 1.0f, 1.0f);
         glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 100);
@@ -324,7 +340,11 @@ void displayResults() {
         if (score == 3) {
             string biscuit = "You collected all the tokens, Meghan gets a biscuit!";
             glColor3f(1.0f, 1.0f, 1.0f);
+
             glRasterPos2i(WIDTH / 2 -120, HEIGHT / 2 - 110);
+
+            glRasterPos2i(WIDTH / 2 -150, HEIGHT / 2 - 110);
+
             for (char &letter : biscuit) {
                 glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
             }

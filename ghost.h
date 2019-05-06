@@ -6,13 +6,13 @@
 #define FINALPROJECT_CHARTREUSE_GHOST_H
 
 #include "circle.h"
+#include "character.h"
 #include "longSquare.h"
 #include "shape.h"
-#include "character.h"
 #include <vector>
-#include <thread>
 #include <chrono>
 #include <cmath>
+#include <thread>
 
 using std::vector;
 
@@ -23,6 +23,7 @@ private:
     //Variables and vectors
     int x;
     int y;
+    bool hit;
     Circle head;
     LongSquare leg1;
     Circle halfCircleLeg;
@@ -46,27 +47,24 @@ public:
 
     //Push ghost to the vector in a specific order
     void addGhost();
-
-    // delete that ghost!
+    bool setHit(bool hit);
+    //clear ghost shape vector
     void deleteGhost();
 
     //Construct the Ghost
     void drawGhost();
+    bool checkGhost(Character &meghan);
+
+    // get collision square center
+    point getCollisionSquareCenter();
 
     //place the complete ghost together;
     //
     //void completedGhost(Ghost ghoul);
 
 
-
-    // get that collision square center
-    point getCollisionSquareCenter();
-
-    // check that ghost!
-    bool checkGhost(Character &meghan);
-
     //Create a method to move the ghost
-    void ghostMove(double x, double y);
+    void  ghostMove(double x, double y);
     void track(int deltaX);
 
     //Create a method for the color of the ghost to change
