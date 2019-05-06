@@ -324,7 +324,7 @@ void displayResults() {
         if (score == 3) {
             string biscuit = "You collected all the tokens, Meghan gets a biscuit!";
             glColor3f(1.0f, 1.0f, 1.0f);
-            glRasterPos2i(WIDTH / 2 -100, HEIGHT / 2 - 110);
+            glRasterPos2i(WIDTH / 2 -120, HEIGHT / 2 - 110);
             for (char &letter : biscuit) {
                 glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
             }
