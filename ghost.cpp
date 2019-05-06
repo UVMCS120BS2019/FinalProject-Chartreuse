@@ -146,14 +146,11 @@ void Ghost::track(int deltaX) {
     deleteGhost();
     if (i < deltaX) {
         ghostMove(5, 0);
-        std::cout << collisionSquare.getCenter().x << std::endl;
         std::this_thread::sleep_for(std::chrono::nanoseconds(250000000));
     } else if (i >= deltaX) {
         ghostMove(-5, 0);
-        std::cout << collisionSquare.getCenter().x << std::endl;
         std::this_thread::sleep_for(std::chrono::nanoseconds(250000000));
     }
-    std::cout << i << std::endl;
     i += 5;
     if (i == (2 * deltaX)) {
         i = 0;
