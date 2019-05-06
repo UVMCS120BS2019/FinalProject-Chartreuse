@@ -301,7 +301,7 @@ void displayResults() {
     } else {
         resultsMessage = "You Won !";
         glColor3f(1.0f, 1.0f, 1.0f);
-        glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 100);
+        glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 70);
         for (char &letter : resultsMessage) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
         }
@@ -316,6 +316,21 @@ void displayResults() {
         glRasterPos2i(WIDTH/2 + 70, HEIGHT/2 - 150);
         for (char &letter : displayScore) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+        }
+        if (score == 3) {
+            string biscuit = "You collected all the tokens, Meghan gets a biscuit!";
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glRasterPos2i(WIDTH / 2 -100, HEIGHT / 2 - 110);
+            for (char &letter : biscuit) {
+                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+            }
+        } else {
+            string biscuit = "You can't afford a biscuit for Meghan";
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glRasterPos2i(WIDTH / 2 -50, HEIGHT / 2 - 110);
+            for (char &letter : biscuit) {
+                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+            }
         }
     }
 
