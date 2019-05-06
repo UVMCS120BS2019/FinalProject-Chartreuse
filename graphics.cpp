@@ -420,7 +420,6 @@ void mouse(int button, int state, int x, int y) {
                 if(button == GLUT_LEFT_BUTTON) {
                     meghan.resetPosition();
                     window = start;
-                    meghan.resetPosition();
                     gameWon = false;
                 }
             }
