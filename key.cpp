@@ -84,3 +84,6 @@ bool Key::isHidden() const {
 void Key::hide() {
     hidden = true;
 }
+void Key::unhide() {
+    hidden = false;
+}

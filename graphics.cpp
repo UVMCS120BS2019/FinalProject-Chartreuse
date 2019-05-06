@@ -171,9 +171,23 @@ void kbdS(int key, int x, int y) {
     if(key1.isHidden()) {
         gameWon = true;
         window=results;
+
+        token1.createTokenSkele(600, 430);
+        token2.createTokenSkele(660, 430);
+        token3.createTokenSkele(720, 430);
+
+        key1.createKeySkele(650, 210);
+        key1.unhide();
+
+        meghan.resetPosition();
+
     }
 
+
     glutPostRedisplay();
+
+
+
 }
 
 void display() {
@@ -224,10 +238,16 @@ void displayHelp(){
     for (char &letter : helpMsg2) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, letter);
     }
-    string helpMsg3 = "Avoid colliding with the ghosts!";
+    string helpMsg3 = "Collect coins for a higher score.";
     glColor3f(1.0f, 1.0f, 1.0f);
     glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 80 );
     for (char &letter : helpMsg3) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, letter);
+    }
+    string helpMsg4 = "And avoid colliding with the ghosts!";
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glRasterPos2i(WIDTH/2-120, HEIGHT/2 + 110 );
+    for (char &letter : helpMsg4) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, letter);
     }
 
@@ -236,6 +256,7 @@ void displayHelp(){
 }
 
 void displayGame() {
+    gameWon = false;
 
     for (LongSquare i : tiles) {
         i.draw();
@@ -251,6 +272,8 @@ void displayGame() {
     token1.drawToken();
     token2.drawToken();
     token3.drawToken();
+
+
 
     glRasterPos2i(700,520);
     for (char &letter : "Coins: "+ to_string(score).substr(0,to_string(score).find('.')+2)){
@@ -353,27 +376,24 @@ void mouse(int button, int state, int x, int y) {
     if (window == results) {
         if (playAgainButton.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
             window = game;
-            gameWon = false;
-            meghan.resetPosition();
             if (playAgainButton.isOverlapping(x,y)) {
                 if(button == GLUT_LEFT_BUTTON) {
                     window = game;
-                    gameWon = false;
-                    meghan.resetPosition();
                 }
             }
         } else if (backToMenuButton.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
             window = start;
-            gameWon = false;
             meghan.resetPosition();
             if (backToMenuButton.isOverlapping(x,y)) {
                 if(button == GLUT_LEFT_BUTTON) {
                     window = start;
-                    gameWon = false;
-                    meghan.resetPosition();
                 }
             }
         }
+        score = 0;
+
+
+
     }
 }
 

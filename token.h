@@ -25,8 +25,7 @@ private:
     bool hidden;
 
 
-    //Create the token skeleton
-    void createTokenSkele(int x, int y);
+
 
     //Push token to the vector in a specific order
 
@@ -37,14 +36,8 @@ public:
     Token(int x, int y);
 
     void drawToken();
-
-    //Place the completed token together
-
-    //TODO::Character collisions with the tokens and wracking up a score
-
-    //Getters
-    //Get the location of the token
-    //int getLocation(int x, int y);
+    //Create the token skeleton
+    void createTokenSkele(int x, int y);
 
     //is there a collision with the character?
     bool tokenCollision(Character &doggo);

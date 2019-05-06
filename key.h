@@ -25,11 +25,8 @@ private:
     LongSquare keySpace;
     vector<Shape*> key;
 
-    //Create the key skeleton using center (x, y)
-    void createKeySkele(int x, int y);
 
-    //Push key to the vector in a specific order
-    void addKey();
+
 
     // clears everything in key vector
     void deleteKey();
@@ -40,6 +37,12 @@ public:
     Key();
     Key(int x, int y);
 
+    //Push key to the vector in a specific order
+    void addKey();
+
+    //Create the key skeleton using center (x, y)
+    void createKeySkele(int x, int y);
+
     // draw key
     void drawKey();
 
@@ -48,6 +51,7 @@ public:
     bool isHidden()const;
 
     void hide();
+    void unhide();
 
     LongSquare getKeySpace();
 
