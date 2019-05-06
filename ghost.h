@@ -7,10 +7,12 @@
 
 #include "circle.h"
 #include "longSquare.h"
+#include "character.h"
 #include "shape.h"
 #include <vector>
 #include <chrono>
 #include <cmath>
+#include <thread>
 
 using std::vector;
 
@@ -51,11 +53,14 @@ public:
     //place the complete ghost together;
     //
     //void completedGhost(Ghost ghoul);
-
+    void deleteGhost();
 
     //Create a method to move the ghost
     void  ghostMove(double x, double y);
-    void track(point start, point end);
+    void track(int deltaX);
+
+    point getCollisionSquareCenter();
+    bool checkGhost(Character &meghan);
 
     //Create a method for the color of the ghost to change
     //void ghostColor();

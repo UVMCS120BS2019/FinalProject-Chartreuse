@@ -122,7 +122,6 @@ bool Ghost::checkGhost(Character &meghan) {
         hit = true;
         std::cout << "You hit the ghost, that's pretty fucking RUDE!" << std::endl;
     }
-    else if()
 
     return hit;
 }
