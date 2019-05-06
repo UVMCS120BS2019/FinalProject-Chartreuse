@@ -6,8 +6,6 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
-//#include <chrono>
-//#include <thread>
 
 #include "graphics.h"
 #include "button.h"
@@ -54,7 +52,8 @@ Token token1(600, 430);
 Token token2(660, 430);
 Token token3(720, 430);
 
-//make ghost
+//make ghosts
+Ghost vanityGhost(WIDTH/2, 400);
 Ghost ghosty(300, 423);
 
 // bool for if game won
@@ -145,7 +144,7 @@ void kbdS(int key, int x, int y) {
             meghan.testBounds();
             break;
     }
-
+    //collide with tokens then hide them
     if(token1.tokenCollision(meghan)) {
 
         if(!token1.isHidden()) {
@@ -166,13 +165,14 @@ void kbdS(int key, int x, int y) {
         token3.hide();
     }
 
-
+    //if the key is grabbed, meghan wins
     key1.checkKey(meghan);
 
     if(key1.isHidden()) {
         gameWon = true;
         window=results;
 
+        //resest the game screen
         token1.createTokenSkele(600, 430);
         token2.createTokenSkele(660, 430);
         token3.createTokenSkele(720, 430);
@@ -227,6 +227,13 @@ void display() {
 }
 
 void displayStart() {
+    string title = "Actual Scary Maze";
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glRasterPos2i(WIDTH/2-70, HEIGHT/2 - 150);
+    for (char &letter : title) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
+    vanityGhost.drawGhost();
     playGame.draw();
     helpGame.draw();
 }
@@ -286,7 +293,6 @@ void displayGame() {
     }
 
 }
-
 void displayResults() {
     string resultsMessage;
     if (gameWon == false) {
@@ -299,7 +305,7 @@ void displayResults() {
     } else {
         resultsMessage = "You Won !";
         glColor3f(1.0f, 1.0f, 1.0f);
-        glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 100);
+        glRasterPos2i(WIDTH/2 - 48, HEIGHT/2 - 70);
         for (char &letter : resultsMessage) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
         }
@@ -314,6 +320,21 @@ void displayResults() {
         glRasterPos2i(WIDTH/2 + 70, HEIGHT/2 - 150);
         for (char &letter : displayScore) {
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+        }
+        if (score == 3) {
+            string biscuit = "You collected all the tokens, Meghan gets a biscuit!";
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glRasterPos2i(WIDTH / 2 -100, HEIGHT / 2 - 110);
+            for (char &letter : biscuit) {
+                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+            }
+        } else {
+            string biscuit = "You can't afford a biscuit for Meghan";
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glRasterPos2i(WIDTH / 2 -50, HEIGHT / 2 - 110);
+            for (char &letter : biscuit) {
+                glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+            }
         }
     }
 
