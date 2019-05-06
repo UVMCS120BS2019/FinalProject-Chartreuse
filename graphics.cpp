@@ -54,12 +54,9 @@ Token token1(600, 430);
 Token token2(660, 430);
 Token token3(720, 430);
 
-<<<<<<< HEAD
 //make ghost
 Ghost ghosty(300, 423);
 
-=======
->>>>>>> Vanessa
 // bool for if game won
 bool gameWon = false;
 
@@ -171,7 +168,7 @@ void kbdS(int key, int x, int y) {
 
 
     key1.checkKey(meghan);
-<<<<<<< HEAD
+
     if(key1.isHidden()) {
         gameWon = true;
         window=results;
@@ -188,12 +185,10 @@ void kbdS(int key, int x, int y) {
     }
 
 
-=======
-    if(one.checkGhost(meghan)== true){
+    if(ghosty.checkGhost(meghan)== true){
         window = results;
     }
 
->>>>>>> Vanessa
     glutPostRedisplay();
 
 
@@ -291,6 +286,7 @@ void displayGame() {
     }
 
 }
+
 void displayResults() {
     string resultsMessage;
     if (gameWon == false) {
@@ -386,17 +382,25 @@ void mouse(int button, int state, int x, int y) {
     if (window == results) {
         if (playAgainButton.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
             window = game;
+            meghan.resetPosition();
+            gameWon = false;
             if (playAgainButton.isOverlapping(x,y)) {
                 if(button == GLUT_LEFT_BUTTON) {
+                    meghan.resetPosition();
                     window = game;
+                    gameWon = false;
                 }
             }
         } else if (backToMenuButton.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
             window = start;
             meghan.resetPosition();
+            gameWon = false;
             if (backToMenuButton.isOverlapping(x,y)) {
                 if(button == GLUT_LEFT_BUTTON) {
+                    meghan.resetPosition();
                     window = start;
+                    meghan.resetPosition();
+                    gameWon = false;
                 }
             }
         }

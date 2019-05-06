@@ -8,7 +8,9 @@
 #include "circle.h"
 #include "longSquare.h"
 #include "shape.h"
+#include "character.h"
 #include <vector>
+#include <thread>
 #include <chrono>
 #include <cmath>
 
@@ -45,6 +47,9 @@ public:
     //Push ghost to the vector in a specific order
     void addGhost();
 
+    // delete that ghost!
+    void deleteGhost();
+
     //Construct the Ghost
     void drawGhost();
 
@@ -53,9 +58,16 @@ public:
     //void completedGhost(Ghost ghoul);
 
 
+
+    // get that collision square center
+    point getCollisionSquareCenter();
+
+    // check that ghost!
+    bool checkGhost(Character &meghan);
+
     //Create a method to move the ghost
-    void  ghostMove(double x, double y);
-    void track(point start, point end);
+    void ghostMove(double x, double y);
+    void track(int deltaX);
 
     //Create a method for the color of the ghost to change
     //void ghostColor();
