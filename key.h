@@ -55,13 +55,6 @@ public:
 
     LongSquare getKeySpace();
 
-
-
-    //Create a method to move the key
-    //void  keyMove();
-
-    //Create a method for the color of the key to change
-    //void keyColor();
 };
 
 

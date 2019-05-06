@@ -69,7 +69,10 @@ LongSquare Key::getKeySpace() {
 
 
 void Key::checkKey(Character &meghan) {
+<<<<<<< HEAD
     //std::cout<<meghan.getCollisionSquare().getRightX()<<std::endl;
+=======
+>>>>>>> Vanessa
     if ((meghan.getCollisionSquare().getRightX()>=keySpace.getLeftX()) &&
         meghan.getCollisionSquare().getBottomY()<=keySpace.getBottomY()){
             deleteKey();

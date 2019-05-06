@@ -54,9 +54,12 @@ Token token1(600, 430);
 Token token2(660, 430);
 Token token3(720, 430);
 
+<<<<<<< HEAD
 //make ghost
 Ghost ghosty(300, 423);
 
+=======
+>>>>>>> Vanessa
 // bool for if game won
 bool gameWon = false;
 
@@ -168,6 +171,7 @@ void kbdS(int key, int x, int y) {
 
 
     key1.checkKey(meghan);
+<<<<<<< HEAD
     if(key1.isHidden()) {
         gameWon = true;
         window=results;
@@ -184,6 +188,12 @@ void kbdS(int key, int x, int y) {
     }
 
 
+=======
+    if(one.checkGhost(meghan)== true){
+        window = results;
+    }
+
+>>>>>>> Vanessa
     glutPostRedisplay();
 
 
