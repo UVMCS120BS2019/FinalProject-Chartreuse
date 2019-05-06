@@ -51,6 +51,11 @@ Token token1;
 // bool for if game won
 bool gameWon = false;
 
+
+//bool for you DIED
+bool youDIED = false;
+
+
 // Enum for the different screen
 enum Screen {start, help, game, results};
 Screen window;
@@ -138,7 +143,9 @@ void kbdS(int key, int x, int y) {
             break;
     }
     one.collisionCheck(meghan.collisionSquareGetLeftX(),meghan.collisionSquareGetRightX(), meghan.collisionSquareGetbottomY(),meghan.collsionSquareGetTopY());
+
     key1.checkKey(meghan);
+    one.setHit(false);
     glutPostRedisplay();
 }
 

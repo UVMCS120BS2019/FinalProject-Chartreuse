@@ -23,6 +23,7 @@ private:
     //Variables and vectors
     int x;
     int y;
+    bool  hit;
     Circle head;
     LongSquare leg1;
     Circle halfCircleLeg;
@@ -40,6 +41,7 @@ private:
     int getCenterY() const;
     int getTopY() const;
     int getBottomY() const;
+    bool collide();
     point getCenter() const;
 
     unsigned int getWidth() const;
@@ -51,7 +53,8 @@ public:
     //Constructors
     Ghost();
     Ghost(int x, int y);
-
+    bool setHit(bool hit);
+    bool getHit();
     //Create ghost skeleton
     void createGhostSkele(int x, int y);
 
@@ -82,6 +85,7 @@ public:
     void  ghostMove(double x, double y);
 
     void track(int x);
+//    bool hit(bool collide);
     bool collisionCheck(int left, int right , int bottom, int top);
 
     void track(point start, point end);

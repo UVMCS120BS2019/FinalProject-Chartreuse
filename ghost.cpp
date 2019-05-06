@@ -10,6 +10,7 @@
 //Variables and vectors
 int x;
 int y;
+bool hit;
 Circle head;
 LongSquare leg1;
 Circle halfCircleLeg;
@@ -100,7 +101,15 @@ void Ghost::ghostMove(double x, double y) {
     mouth.moveCenter(x,y);
 }
 
+bool Ghost::setHit(bool hit){
+    this->hit = hit;
+    return hit;
 
+
+};
+bool Ghost::getHit(){
+    return hit;
+}
 int Ghost::getCenterX() const {
     return center.x;
 }
@@ -139,32 +148,53 @@ bool Ghost::collisionCheck(int left, int right , int bottom, int top) {
               << collisionSquareGhost.getRightX() << " bottom: " << this->collisionSquareGhost.getBottomY() << " top:"
               << this->collisionSquareGhost.getTopY() << std::endl << std::endl;
     std::cout << "Dog coords: left:" << left << " right: " << right << " bottom: " << bottom << " top: "
-              << this->collisionSquareGhost.getTopY() << std::endl << std::endl;
+              << top<< std::endl << std::endl;
     bool collide = false;
     //check the X axis
-    if (abs(collisionSquareGhost.getLeftX() - collisionSquareGhost.getRightX()) < left + right) {
-        //check the Y axis
+//    if ( (abs(260  - 296) <= abs(left + right)) && (abs(-15 - 413) <= abs(top + bottom)) )  {
+//        //check the Y axis
+//
+//            std::cout<<"HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"<<std::endl;
+//            collide = true;
+//        }
+//
+//    return collide;
+//}
+    int r = right/4;
+    int b = bottom/26;
+    int counter = 0;
 
-        if (abs(this->collisionSquareGhost.getTopY() - this->collisionSquareGhost.getBottomY()) < top + bottom) {
+
+        std::cout << "Right: " << r << "Bottom: " << b << std::endl;
+
+
+        if (left < 300 && bottom > 423) {
             collide = true;
+
+
+
+
+            std::cout << "You hit the ghost, that's pretty fucking RUDE!" << std::endl;
+
+
         }
-    }
-    return collide;
-}
 
-
-//    if ( ((this->collisionSquareGhost.getLeftX() <= left) && (left <= this->collisionSquareGhost.getRightX())) || ((this->collisionSquareGhost.getTopY() <= top) && (top < this->collisionSquareGhost.getBottomY())) ) {
+//    int i = collisionSquareGhost.getCenter()
+//    if  ((right = static_cast<(collisionSquareGhost.getCenter()) || left = collisionSquareGhost.getCenter() || bottom = collisionSquareGhost.getCenter() || top = collisionSquareGhost.getCenter()))
+//
+//    if ( ((260 <= left) && (left >= 296)) )  {
 //        collide = true;
+//        std::cout<<"You hit the ghost, that's pretty fucking RUDE!"<<std::endl;
 //
 //    }
 //    if (collide == true){
-//        std::cout<<"You hit the ghost, that's pretty fucking RUDE!"<<std::endl;
+//
 //    }
-////    if ((this->getTopY() < top) && (top < this->getTopY()) || (this->getBottomY() < bottom) && (bottom < this->getBottomY())) {
-////        collide = true;
-////    }
-//    return collide;
-//}
+//    if ((this->getTopY() < top) && (top < this->getTopY()) || (this->getBottomY() < bottom) && (bottom < this->getBottomY())) {
+//        collide = true;
+//    }
+    return collide;
+}
 
 //
 //void Ghost::track(int x) {
