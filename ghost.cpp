@@ -76,20 +76,42 @@ void Ghost::drawGhost(){
 }
 
 
-bool Ghost::checkGhost(Character &meghan){
-    std::cout<<meghan.getCollisionSquare().getBottomY()<<std::endl;
-    std::cout<<collisionSquare.getTopY()<<std::endl;
-    if ( ((this->collisionSquare.getLeftX() <= meghan.getCollisionSquare().getLeftX()) && (meghan.getCollisionSquare().getLeftX() <= this->collisionSquare.getRightX())) || ((this->collisionSquare.getTopY() <= meghan.getCollisionSquare().getTopY()) && (meghan.getCollisionSquare().getTopY() < this->collisionSquare.getBottomY())) ) {
-        hit = true;
-        std::cout<<"You hit the ghost, that's pretty fucking RUDE!"<<std::endl;
-    }
-
-
-//    if ((meghan.getCollisionSquare().getBottomY()>=collisionSquare.getTopY())){
-//       hit = true;
+bool Ghost::checkGhost(Character &meghan) {
+    std::cout << meghan.getCollisionSquare().getBottomY() << std::endl;
+    std::cout << collisionSquare.getTopY() << std::endl;
+    //std::cout = meghan.getCollisionSquare().getCentX();
+//    if (collisionSquare.getLeftX() - collisionSquare.getRightX() < meghan.getCollisionSquare().getLeftX() + meghan.getCollisionSquare().getRightX()) {
+//        //check the Y axis
+//
+//        if (abs(this->collisionSquare.getTopY() - this->collisionSquare.getBottomY()) < meghan.getCollisionSquare().getTopY() + meghan.getCollisionSquare().getBottomY()) {
+//            hit = true;
+//        }
+//    }
+//    if ((meghan.getCollisionSquare().getRightX()>= collisionSquare.getLeftX()) &&
+//        meghan.getCollisionSquare().getBottomY()<= collisionSquare.getBottomY()){
+//        std::cout<<"You hit the ghost, that's pretty fucking RUDE!"<<std::endl;
+//    }
+//    else if((collisionSquare.getLeftX() >= meghan.getCollisionSquare().getRightX()) &&
+//              collisionSquare.getBottomY()<=meghan.getCollisionSquare().getBottomY() ){
+//        std::cout<<"case 2!"<<std::endl;
+//
 //    }
 //    return hit;
- return hit;
+//}
+
+
+
+
+    if ((this->collisionSquare.getLeftX() <= meghan.getCollisionSquare().getCentX() &&
+         (meghan.getCollisionSquare().getCentX() <= this->collisionSquare.getRightX())) &&
+        ((this->collisionSquare.getTopY() <= meghan.getCollisionSquare().getTopY()) &&
+         (meghan.getCollisionSquare().getTopY() < this->collisionSquare.getBottomY()))) {
+        hit = true;
+        std::cout << "You hit the ghost, that's pretty fucking RUDE!" << std::endl;
+    }
+    else if()
+
+    return hit;
 }
 
 
