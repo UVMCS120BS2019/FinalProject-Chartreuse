@@ -11,6 +11,7 @@
 #include <vector>
 #include <chrono>
 #include <cmath>
+#include <thread>
 
 using std::vector;
 
@@ -45,8 +46,14 @@ public:
     //Push ghost to the vector in a specific order
     void addGhost();
 
+    //clear ghost shape vector
+    void deleteGhost();
+
     //Construct the Ghost
     void drawGhost();
+
+    // get collision square center
+    point getCollisionSquareCenter();
 
     //place the complete ghost together;
     //
@@ -55,7 +62,7 @@ public:
 
     //Create a method to move the ghost
     void  ghostMove(double x, double y);
-    void track(point start, point end);
+    void track(int deltaX);
 
     //Create a method for the color of the ghost to change
     //void ghostColor();

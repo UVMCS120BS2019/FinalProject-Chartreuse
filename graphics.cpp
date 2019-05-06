@@ -6,6 +6,8 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
+//#include <chrono>
+//#include <thread>
 
 #include "graphics.h"
 #include "button.h"
@@ -40,12 +42,12 @@ Button backToMenuButton(backToMenuBox, "Back to Menu");
 
 //make a character
 Character meghan;
-Ghost one (300, 423);
+// Ghost one (300, 423);
 Key key1(650, 210);
 Token token1;
 
 //make ghost
-//Ghost ghosty;
+Ghost ghosty(300, 423);
 
 // bool for if game won
 bool gameWon = false;
@@ -205,8 +207,8 @@ void displayGame() {
 
     meghan.draw();
 
-    one.addGhost();
-    one.drawGhost();
+    ghosty.addGhost();
+    ghosty.drawGhost();
 
     key1.drawKey();
     token1.setLocation(200,200);
@@ -254,7 +256,11 @@ void kbd(unsigned char key, int x, int y){
 }
 
 void timer(int dummy) {
-
+    if (window == game) {
+        ghosty.track(400);
+    }
+    glutPostRedisplay();
+    glutTimerFunc(30, timer, dummy);
 }
 
 //mouse clicking on stuff
