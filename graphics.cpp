@@ -44,9 +44,6 @@ Ghost one (300, 423);
 Key key1(650, 210);
 Token token1;
 
-//make ghost
-//Ghost ghosty;
-
 // bool for if game won
 bool gameWon = false;
 
@@ -136,6 +133,10 @@ void kbdS(int key, int x, int y) {
             break;
     }
     key1.checkKey(meghan);
+    if(one.checkGhost(meghan)== true){
+        window = results;
+    }
+
     glutPostRedisplay();
 }
 

@@ -7,12 +7,16 @@
 
 #include "circle.h"
 #include "longSquare.h"
+#include "character.h"
 #include "shape.h"
 #include <vector>
 #include <chrono>
 #include <cmath>
+#include <iostream>
 
 using std::vector;
+using std::cout;
+using std::endl;
 
 class Ghost {
 
@@ -48,19 +52,11 @@ public:
     //Construct the Ghost
     void drawGhost();
 
-    //place the complete ghost together;
-    //
-    //void completedGhost(Ghost ghoul);
-
-
     //Create a method to move the ghost
     void  ghostMove(double x, double y);
     void track(point start, point end);
 
-    //Create a method for the color of the ghost to change
-    //void ghostColor();
-
-
+    bool checkGhost(Character &meghan);
 
 
 

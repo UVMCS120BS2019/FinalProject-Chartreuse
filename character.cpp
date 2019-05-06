@@ -140,3 +140,5 @@ bool Character::testLowerBounds() {
 LongSquare Character::getCollisionSquare() {
     return collisionSquare;
 }
+
+

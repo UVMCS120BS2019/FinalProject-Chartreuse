@@ -15,6 +15,7 @@ Circle halfCircleLeg3;
 Circle eye1;
 Circle eye2;
 Circle mouth;
+bool hit;
 vector<Shape*> ghost;
 LongSquare collisionSquare;
 
@@ -75,13 +76,23 @@ void Ghost::drawGhost(){
 }
 
 
-//Define Public methods
-//This calls all the private and public methods and assembles the ghost
-//void Ghost::completedGhost(Ghost ghoul){
-//    ghoul.createGhostSkele(100,100);
-//    ghoul.addGhost();
-//    ghoul.drawGhost();
-//}
+bool Ghost::checkGhost(Character &meghan){
+    std::cout<<meghan.getCollisionSquare().getBottomY()<<std::endl;
+    std::cout<<collisionSquare.getTopY()<<std::endl;
+    if ( ((this->collisionSquare.getLeftX() <= meghan.getCollisionSquare().getLeftX()) && (meghan.getCollisionSquare().getLeftX() <= this->collisionSquare.getRightX())) || ((this->collisionSquare.getTopY() <= meghan.getCollisionSquare().getTopY()) && (meghan.getCollisionSquare().getTopY() < this->collisionSquare.getBottomY())) ) {
+        hit = true;
+        std::cout<<"You hit the ghost, that's pretty fucking RUDE!"<<std::endl;
+    }
+
+
+//    if ((meghan.getCollisionSquare().getBottomY()>=collisionSquare.getTopY())){
+//       hit = true;
+//    }
+//    return hit;
+ return hit;
+}
+
+
 
 void Ghost::ghostMove(double x, double y) {
     head.moveCenter(x,y);
