@@ -6,8 +6,6 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
-//#include <chrono>
-//#include <thread>
 
 #include "graphics.h"
 #include "button.h"
@@ -16,6 +14,7 @@
 #include "ghost.h"
 #include "token.h"
 #include "key.h"
+
 
 using namespace std;
 
@@ -54,7 +53,8 @@ Token token1(600, 430);
 Token token2(660, 430);
 Token token3(720, 430);
 
-//make ghost
+//make ghosts
+Ghost vanityGhost(WIDTH/2, 400);
 Ghost ghosty(300, 423);
 
 // bool for if game won
@@ -118,6 +118,7 @@ void init() {
     }
     // end adding squares to tile vector
 
+
     meghan.setBackground(tiles);
 }
 
@@ -145,7 +146,7 @@ void kbdS(int key, int x, int y) {
             meghan.testBounds();
             break;
     }
-
+    //collide with tokens then hide them
     if(token1.tokenCollision(meghan)) {
 
         if(!token1.isHidden()) {
@@ -166,12 +167,13 @@ void kbdS(int key, int x, int y) {
         token3.hide();
     }
 
-
+    //if the key is grabbed, meghan wins
     key1.checkKey(meghan);
     if(key1.isHidden()) {
         gameWon = true;
         window=results;
 
+        //resest the game screen
         token1.createTokenSkele(600, 430);
         token2.createTokenSkele(660, 430);
         token3.createTokenSkele(720, 430);
@@ -182,7 +184,6 @@ void kbdS(int key, int x, int y) {
         meghan.resetPosition();
 
     }
-
 
     glutPostRedisplay();
 
@@ -222,6 +223,13 @@ void display() {
 }
 
 void displayStart() {
+    string helpMsg1 = "Actual Scary Maze";
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glRasterPos2i(WIDTH/2-70, HEIGHT/2 - 150);
+    for (char &letter : helpMsg1) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, letter);
+    }
+    vanityGhost.drawGhost();
     playGame.draw();
     helpGame.draw();
 }
@@ -337,6 +345,8 @@ void timer(int dummy) {
     if (window == game) {
         ghosty.track(400);
     }
+
+
     glutPostRedisplay();
     glutTimerFunc(30, timer, dummy);
 }
