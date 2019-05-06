@@ -8,6 +8,7 @@
 using namespace std;
 
 Character::Character() {
+    deleteDog();
     collisionSquare = LongSquare({0.4,0.4,0.4,0.0}, {35, 105}, 32,37);
     torso1 = Circle({1,1,1, 1}, {30, 110}, 10);
     torso2 = Circle({1,1,1, 1}, {35, 110}, 10);
@@ -40,8 +41,8 @@ void Character::draw() {
 }
 
 
-
 void Character::move(double x, double y) {
+
     torso1.moveCenter(x,y);
     torso2.moveCenter(x,y);
     leg1.moveCenter(x,y);
@@ -53,25 +54,20 @@ void Character::move(double x, double y) {
 }
 
 void Character::resetPosition() {
-    body.clear();
-
+    head.setCenter(43,97);
     collisionSquare = LongSquare({0.4,0.4,0.4,0.0}, {35, 105}, 32,37);
-    torso1 = Circle({1,1,1}, {30, 110}, 10);
-    torso2 = Circle({1,1,1}, {35, 110}, 10);
-    leg1 = Circle({0,0,0}, {42, 120}, 3);
-    leg2 = Circle({0,0,0}, {23, 120}, 3);
-    head = Circle({1,1,1}, {43, 97}, 8);
-    nose = Circle({0,0,0}, {51, 97}, 3);
-    tail = Circle({0,0,0}, {20, 100}, 3);
+    torso1.setCenter(30,110);
+    torso2.setCenter(35,110);
+    leg1.setCenter(42,120);
+    leg2.setCenter(23,120);
+    nose.setCenter(51,97);
+    tail.setCenter(20,100);
 
-    body.emplace_back(&collisionSquare);
-    body.emplace_back(&torso1);
-    body.emplace_back(&torso2);
-    body.emplace_back(&leg1);
-    body.emplace_back(&leg2);
-    body.emplace_back(&head);
-    body.emplace_back(&nose);
-    body.emplace_back(&tail);
+
+}
+
+void Character::deleteDog() {
+    body.clear();
 }
 
 // boundary testing functions

@@ -169,9 +169,23 @@ void kbdS(int key, int x, int y) {
     if(key1.isHidden()) {
         gameWon = true;
         window=results;
+
+        token1.createTokenSkele(600, 430);
+        token2.createTokenSkele(660, 430);
+        token3.createTokenSkele(720, 430);
+
+        key1.createKeySkele(650, 210);
+        key1.unhide();
+
+        meghan.resetPosition();
+
     }
 
+
     glutPostRedisplay();
+
+
+
 }
 
 void display() {
@@ -240,6 +254,7 @@ void displayHelp(){
 }
 
 void displayGame() {
+    gameWon = false;
 
     for (LongSquare i : tiles) {
         i.draw();
@@ -358,35 +373,24 @@ void mouse(int button, int state, int x, int y) {
     if (window == results) {
         if (playAgainButton.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
             window = game;
-            gameWon = false;
             if (playAgainButton.isOverlapping(x,y)) {
                 if(button == GLUT_LEFT_BUTTON) {
                     window = game;
-                    gameWon = false;
                 }
             }
         } else if (backToMenuButton.isOverlapping(x,y) and button == GLUT_LEFT_BUTTON) {
             window = start;
-            gameWon = false;
             meghan.resetPosition();
             if (backToMenuButton.isOverlapping(x,y)) {
                 if(button == GLUT_LEFT_BUTTON) {
                     window = start;
-                    gameWon = false;
                 }
             }
         }
         score = 0;
-        token1.createTokenSkele(600, 430);
-        token2.createTokenSkele(660, 430);
-        token3.createTokenSkele(720, 430);
-        key1.createKeySkele(650, 210);
-        key1.addKey();
-        //meghan.resetPosition();
 
 
-        Token token2(660, 430);
-        Token token3(720, 430);
+
     }
 }
 

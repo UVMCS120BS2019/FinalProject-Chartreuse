@@ -34,6 +34,7 @@ public:
     void draw();
     void move(double x, double y);
     void resetPosition();
+    void deleteDog();
 
     // boundary testing functions
     void testBounds();

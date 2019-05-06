@@ -51,6 +51,7 @@ public:
     bool isHidden()const;
 
     void hide();
+    void unhide();
 
     LongSquare getKeySpace();
 
