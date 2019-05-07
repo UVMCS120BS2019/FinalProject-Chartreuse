@@ -203,7 +203,6 @@ void kbdS(int key, int x, int y) {
     }
 
 
-    cout<<endl;
 
     glutPostRedisplay();
 

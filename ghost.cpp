@@ -92,8 +92,8 @@ bool Ghost::setHit(bool hit){
     return hit;
 }
 bool Ghost::checkGhost(Character &meghan) {
-    std::cout << meghan.getCollisionSquare().getBottomY() << std::endl;
-    std::cout << collisionSquare.getTopY() << std::endl;
+//    std::cout << meghan.getCollisionSquare().getBottomY() << std::endl;
+//    std::cout << collisionSquare.getTopY() << std::endl;
     //std::cout = meghan.getCollisionSquare().getCentX();
 //    if (collisionSquare.getLeftX() - collisionSquare.getRightX() < meghan.getCollisionSquare().getLeftX() + meghan.getCollisionSquare().getRightX()) {
 //        //check the Y axis
@@ -123,7 +123,7 @@ bool Ghost::checkGhost(Character &meghan) {
          (meghan.getCollisionSquare().getTopY() < this->collisionSquare.getBottomY()))) {
         hit = true;
 
-        std::cout << "You hit the ghost, that's pretty fucking RUDE!" << std::endl;
+//        std::cout << "You hit the ghost, that's pretty fucking RUDE!" << std::endl;
     }
    // else if()
 
