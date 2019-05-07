@@ -18,6 +18,7 @@ Circle halfCircleLeg3;
 Circle eye1;
 Circle eye2;
 Circle mouth;
+bool hit;
 vector<Shape*> ghost;
 LongSquare collisionSquare;
 
@@ -131,13 +132,44 @@ bool Ghost::checkGhost(Character &meghan) {
 }
 
 
-//Define Public methods
-//This calls all the private and public methods and assembles the ghost
-//void Ghost::completedGhost(Ghost ghoul){
-//    ghoul.createGhostSkele(100,100);
-//    ghoul.addGhost();
-//    ghoul.drawGhost();
+bool Ghost::checkGhost(Character &meghan) {
+    std::cout << meghan.getCollisionSquare().getBottomY() << std::endl;
+    std::cout << collisionSquare.getTopY() << std::endl;
+    //std::cout = meghan.getCollisionSquare().getCentX();
+//    if (collisionSquare.getLeftX() - collisionSquare.getRightX() < meghan.getCollisionSquare().getLeftX() + meghan.getCollisionSquare().getRightX()) {
+//        //check the Y axis
+//
+//        if (abs(this->collisionSquare.getTopY() - this->collisionSquare.getBottomY()) < meghan.getCollisionSquare().getTopY() + meghan.getCollisionSquare().getBottomY()) {
+//            hit = true;
+//        }
+//    }
+//    if ((meghan.getCollisionSquare().getRightX()>= collisionSquare.getLeftX()) &&
+//        meghan.getCollisionSquare().getBottomY()<= collisionSquare.getBottomY()){
+//        std::cout<<"You hit the ghost, that's pretty fucking RUDE!"<<std::endl;
+//    }
+//    else if((collisionSquare.getLeftX() >= meghan.getCollisionSquare().getRightX()) &&
+//              collisionSquare.getBottomY()<=meghan.getCollisionSquare().getBottomY() ){
+//        std::cout<<"case 2!"<<std::endl;
+//
+//    }
+//    return hit;
 //}
+
+
+
+
+    if ((this->collisionSquare.getLeftX() <= meghan.getCollisionSquare().getCentX() &&
+         (meghan.getCollisionSquare().getCentX() <= this->collisionSquare.getRightX())) &&
+        ((this->collisionSquare.getTopY() <= meghan.getCollisionSquare().getTopY()) &&
+         (meghan.getCollisionSquare().getTopY() < this->collisionSquare.getBottomY()))) {
+        hit = true;
+        std::cout << "You hit the ghost, that's pretty fucking RUDE!" << std::endl;
+    }
+
+    return hit;
+}
+
+
 
 void Ghost::ghostMove(double x, double y) {
     collisionSquare.move(x, y);

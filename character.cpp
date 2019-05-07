@@ -141,3 +141,5 @@ int Character::getFront() {
 LongSquare Character::getCollisionSquare() {
     return collisionSquare;
 }
+
+
